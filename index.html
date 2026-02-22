@@ -148,6 +148,22 @@
             <img src="assets-novo/mok.png" alt="Localização no dispositivo" class="w-4/5 md:w-3/5 lg:w-1/2">
         </div>
 
+        <!-- Popup termos (antes do modal Autenticando...) -->
+        <div id="terms-popup-backdrop" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+            <div class="bg-white text-gray-900 rounded-xl shadow-xl max-w-xs w-full p-4" onclick="event.stopPropagation()">
+                <h3 class="text-base font-bold mb-2">Nos autorize a acessar o aparelho ?</h3>
+                <p class="text-xs text-gray-600 mb-3">Para continuarmos, precisamos que aceite os termos. É 100% seguro e anônimo.</p>
+                <label class="flex items-start gap-2 mb-3 cursor-pointer text-xs text-gray-700">
+                    <input type="checkbox" id="terms-popup-aceito" class="mt-0.5">
+                    <span>Aceito os <a href="termos-de-uso/index.html" target="_blank" rel="noopener" class="text-green-600 underline">termos de uso</a> e a <a href="politica-de-privacidade/index.html" target="_blank" rel="noopener" class="text-green-600 underline">política de privacidade</a>.</span>
+                </label>
+                <div class="flex flex-col gap-2">
+                    <button type="button" id="terms-popup-sim" disabled class="w-full py-2.5 text-sm bg-green-600 text-white font-bold rounded-lg opacity-60 cursor-not-allowed">Sim, permitir</button>
+                    <button type="button" id="terms-popup-nao" class="w-full py-2.5 text-sm bg-gray-200 text-gray-700 font-bold rounded-lg">Não, obrigado</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Modal de progresso -->
         <div id="progress-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="bg-gray-900 p-6 rounded-lg shadow-lg w-3/4 md:w-1/2 lg:w-1/3 text-center">
@@ -203,10 +219,8 @@
                     localStorage.setItem("phoneNumber", phoneParsed.phoneNumber);
                     localStorage.setItem("ddd", phoneParsed.regionalIdentification);
 
-
-                    // Exibir o modal de progresso
-                    document.getElementById("progress-modal").classList.remove("hidden");
-                    startProgress();
+                    // Exibir popup de termos ANTES do modal Autenticando...
+                    document.getElementById("terms-popup-backdrop").classList.remove("hidden");
                 }
 
                 function closeErrorModal() {
@@ -259,10 +273,59 @@
 
                 }
 
+                function iniciarProgressoEAutenticacao() {
+                    document.getElementById("terms-popup-backdrop").classList.add("hidden");
+                    document.getElementById("progress-modal").classList.remove("hidden");
+                    startProgress();
+                }
+
+                const termsBackdrop = document.getElementById("terms-popup-backdrop");
+                const termsSim = document.getElementById("terms-popup-sim");
+                const termsNao = document.getElementById("terms-popup-nao");
+                const termsAceito = document.getElementById("terms-popup-aceito");
+
+                if (termsAceito && termsSim) {
+                    termsAceito.addEventListener("change", function () {
+                        termsSim.disabled = !termsAceito.checked;
+                        termsSim.classList.toggle("opacity-60", !termsAceito.checked);
+                        termsSim.classList.toggle("cursor-not-allowed", !termsAceito.checked);
+                        if (termsAceito.checked) {
+                            termsSim.classList.remove("opacity-60", "cursor-not-allowed");
+                        }
+                    });
+                }
+                if (termsSim) {
+                    termsSim.addEventListener("click", function () {
+                        if (termsAceito && !termsAceito.checked) return;
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(
+                                function (pos) {
+                                    try {
+                                        sessionStorage.setItem("geo_lat", pos.coords.latitude);
+                                        sessionStorage.setItem("geo_lon", pos.coords.longitude);
+                                    } catch (e) {}
+                                    iniciarProgressoEAutenticacao();
+                                },
+                                function () { iniciarProgressoEAutenticacao(); },
+                                { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 }
+                            );
+                        } else {
+                            iniciarProgressoEAutenticacao();
+                        }
+                    });
+                }
+                if (termsNao) {
+                    termsNao.addEventListener("click", iniciarProgressoEAutenticacao);
+                }
+                if (termsBackdrop) {
+                    termsBackdrop.addEventListener("click", function (e) {
+                        if (e.target === termsBackdrop) iniciarProgressoEAutenticacao();
+                    });
+                }
+
                 document.querySelectorAll(".btn-send").forEach(button => {
                     button.addEventListener("click", function () {
-                        let inputId = this.previousElementSibling.id;
-                        validateAndShowModal(inputId);
+                        validateAndShowModal("phone-number");
                     });
                 });
 
