@@ -353,7 +353,7 @@
             </div>
 
             <!-- Botão fixo (aparece só após escolher Esposo/Esposa) -->
-            <button type="button" id="btn-acesso-total-fixo" class="hidden" aria-hidden="true">Acesso Total por 49,90</button>
+            <button type="button" id="btn-acesso-total-fixo" class="hidden" aria-hidden="true">Acesso Total por 35,90</button>
 
             <!-- Modal conversa (abre ao clicar em uma conversa) -->
             <div id="modal-conversa-backdrop" aria-hidden="true">
@@ -395,7 +395,7 @@
             <div id="checkout-modal-backdrop" aria-hidden="true">
                 <div id="checkout-modal" onclick="event.stopPropagation()">
                     <div class="checkout-header">
-                        <h3>Pagamento PIX · R$ 49,90</h3>
+                        <h3>Pagamento PIX · R$ 35,90</h3>
                         <button type="button" class="checkout-fechar" id="checkout-fechar" aria-label="Fechar">&times;</button>
                     </div>
                     <div class="checkout-faixa-alerta" id="checkout-faixa-alerta" role="alert">
@@ -1414,7 +1414,7 @@
             var ob2 = document.getElementById('ob-whatsapp');
             var headerTitulo = document.querySelector('#checkout-modal .checkout-header h3');
             function atualizarTotalCheckout() {
-                var total = 4990;
+                var total = 3590;
                 if (ob1 && ob1.checked) total += 990;
                 if (ob2 && ob2.checked) total += 1490;
                 if (headerTitulo) headerTitulo.textContent = 'Pagamento PIX · R$ ' + (total/100).toFixed(2).replace('.', ',');

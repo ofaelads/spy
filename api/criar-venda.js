@@ -43,7 +43,7 @@ export default async function handler(req, res) {
   const email = String(body.email || '').trim();
   const phone = String(body.phone || '').replace(/\D/g, '');
   const cpf = String(body.cpf || body.document || '').replace(/\D/g, '');
-  const amount = Math.round(Number(body.amount) || 4990);
+  const amount = Math.round(Number(body.amount) || 3590);
   const itemTitle = String(body.itemTitle || 'Acesso Total - Relatório Completo').trim();
 
   if (!name || !email || !phone || cpf.length !== 11) {

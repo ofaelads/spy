@@ -12,21 +12,18 @@ function highlightNextStep() {
 
 setInterval(highlightNextStep, 3000);
 highlightNextStep();
+/** Formato: (DDD) 9xxxx-xxxx */
 function generatePhoneNumber() {
   const ddd = Math.floor(10 + Math.random() * 89);
-  const firstPart = Math.floor(90000 + Math.random() * 9999)
-    .toString()
-    .slice(0, 5);
+  const firstPart = Math.floor(1000 + Math.random() * 9000); // 4 dígitos (9 + estes = 5 antes do hífen)
   const secondPart = Math.floor(1000 + Math.random() * 9000);
   return `(${ddd}) 9${firstPart}-${secondPart}`;
 }
 
-/** Número formatado com os 4 últimos dígitos mascarados: (11) 98765-**** */
+/** Formato: (DDD) 9xxxx-**** — 5 dígitos após o DDD, depois hífen e **** */
 function generatePhoneNumberMasked() {
   const ddd = Math.floor(10 + Math.random() * 89);
-  const firstPart = Math.floor(90000 + Math.random() * 9999)
-    .toString()
-    .slice(0, 5);
+  const firstPart = Math.floor(1000 + Math.random() * 9000); // 4 dígitos
   return `(${ddd}) 9${firstPart}-****`;
 }
 
