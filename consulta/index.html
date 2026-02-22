@@ -1247,9 +1247,16 @@
                 var faixaTexto = document.getElementById('checkout-faixa-texto');
                 if (faixaTexto) faixaTexto.textContent = 'Essa oferta vai até ' + dd + '/' + mm + ' às 00:00hrs. Depois volta ao preço normal de R$ 497.';
                 var phoneEl = document.getElementById('perfil-card-phone');
-                if (phoneEl && phoneEl.textContent && phoneEl.textContent.replace(/\D/g, '').length >= 10) {
+                var telInputCheckout = document.getElementById('checkout-telefone');
+                if (telInputCheckout) telInputCheckout.value = '';
+                if (phoneEl && phoneEl.textContent) {
                     var tel = phoneEl.textContent.replace(/\D/g, '');
-                    document.getElementById('checkout-telefone').value = tel.length >= 11 ? '(' + tel.slice(0,2) + ') ' + tel.slice(2,7) + '-' + tel.slice(7) : tel;
+                    var ddd = tel.length >= 2 ? parseInt(tel.slice(0, 2), 10) : 0;
+                    var isPlaceholder = tel.length < 11 || tel === '00000000000' || ddd < 11 || ddd > 99;
+                    if (!isPlaceholder && tel.length >= 11) {
+                        telInputCheckout = document.getElementById('checkout-telefone');
+                        if (telInputCheckout) telInputCheckout.value = '(' + tel.slice(0,2) + ') ' + tel.slice(2,7) + '-' + tel.slice(7);
+                    }
                 }
                 backdrop.classList.add('ativo');
                 backdrop.setAttribute('aria-hidden', 'false');
