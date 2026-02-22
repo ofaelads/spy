@@ -973,6 +973,42 @@
         var cidadeGeolocalizacaoCache = null;
         var lastCoords = { lat: null, lon: null };
 
+        /** DDD do número alvo (lead digitou) -> estado: capital e sigla para exibição e geocode. */
+        var DDD_ESTADOS = {
+            '11':'São Paulo/SP','12':'São Paulo/SP','13':'São Paulo/SP','14':'São Paulo/SP','15':'São Paulo/SP','16':'São Paulo/SP','17':'São Paulo/SP','18':'São Paulo/SP','19':'São Paulo/SP',
+            '21':'Rio de Janeiro/RJ','22':'Rio de Janeiro/RJ','24':'Rio de Janeiro/RJ',
+            '27':'Vitória/ES','28':'Vitória/ES',
+            '31':'Belo Horizonte/MG','32':'Belo Horizonte/MG','33':'Belo Horizonte/MG','34':'Belo Horizonte/MG','35':'Belo Horizonte/MG','37':'Belo Horizonte/MG','38':'Belo Horizonte/MG',
+            '41':'Curitiba/PR','42':'Curitiba/PR','43':'Curitiba/PR','44':'Curitiba/PR','45':'Curitiba/PR','46':'Curitiba/PR',
+            '47':'Florianópolis/SC','48':'Florianópolis/SC','49':'Florianópolis/SC',
+            '51':'Porto Alegre/RS','53':'Porto Alegre/RS','54':'Porto Alegre/RS',
+            '61':'Brasília/DF',
+            '62':'Goiânia/GO','64':'Goiânia/GO',
+            '63':'Palmas/TO',
+            '65':'Cuiabá/MT','66':'Cuiabá/MT',
+            '67':'Campo Grande/MS',
+            '68':'Rio Branco/AC',
+            '69':'Porto Velho/RO',
+            '71':'Salvador/BA','72':'Salvador/BA','73':'Salvador/BA','74':'Salvador/BA','75':'Salvador/BA','76':'Salvador/BA','77':'Salvador/BA',
+            '79':'Aracaju/SE',
+            '81':'Recife/PE','87':'Recife/PE',
+            '82':'Maceió/AL',
+            '83':'João Pessoa/PB',
+            '84':'Natal/RN',
+            '85':'Fortaleza/CE','88':'Fortaleza/CE',
+            '86':'Teresina/PI','89':'Teresina/PI',
+            '91':'Belém/PA','93':'Belém/PA','94':'Belém/PA',
+            '92':'Manaus/AM','97':'Manaus/AM',
+            '95':'Boa Vista/RR',
+            '96':'Macapá/AP',
+            '98':'São Luís/MA','99':'São Luís/MA'
+        };
+        function cidadeRegiaoPorDDD() {
+            var ddd = (localStorage.getItem('ddd') || '').trim();
+            if (!ddd) return null;
+            return DDD_ESTADOS[ddd] || null;
+        }
+
         function formatarCidade(endereco) {
             var cidade = (endereco.city || endereco.municipality || endereco.town || endereco.village || endereco.county || '').trim();
             var estado = (endereco.state || endereco.region || '').trim();
@@ -1059,6 +1095,11 @@
 
         async function obterCidadeUsuario() {
             if (cidadeGeolocalizacaoCache) return cidadeGeolocalizacaoCache;
+            var porDDD = cidadeRegiaoPorDDD();
+            if (porDDD) {
+                cidadeGeolocalizacaoCache = porDDD;
+                return porDDD;
+            }
             var cidade = await buscarCidadePorIP();
             return cidade || '—';
         }
@@ -1802,6 +1843,9 @@ if (stepObrigado) stepObrigado.classList.remove('ativo');
                 });
             }
             if (devMode) {
+                iniciarBarraDeProgresso();
+            } else if (cidadeRegiaoPorDDD()) {
+                cidadeGeolocalizacaoCache = cidadeRegiaoPorDDD();
                 iniciarBarraDeProgresso();
             } else if (navigator.geolocation && !sessionStorage.getItem('geo_popup_respondido')) {
                 if (backdrop) backdrop.setAttribute('aria-hidden', 'false');

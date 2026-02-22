@@ -109,8 +109,17 @@ function updateInvestigations() {
   }
 }
 
-setInterval(updateInvestigations, 5000);
-updateInvestigations();
+function whenIdle(cb, delayFallback) {
+  if (typeof requestIdleCallback !== "undefined") {
+    requestIdleCallback(cb, { timeout: delayFallback || 2500 });
+  } else {
+    setTimeout(cb, delayFallback || 1500);
+  }
+}
+whenIdle(function () {
+  setInterval(updateInvestigations, 5000);
+  updateInvestigations();
+});
 
 const countrySelect = document.getElementById("country-select");
 if (countrySelect) {
@@ -125,7 +134,9 @@ if (countrySelect) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initConsultasAoVivo);
+document.addEventListener("DOMContentLoaded", function () {
+  whenIdle(initConsultasAoVivo, 3500);
+});
 
 const buttons = document.querySelectorAll(".tab-button");
 buttons.forEach((button) => {
@@ -203,12 +214,12 @@ function startProgress() {
   }, 1000);
 }
 
-document
-  .querySelector(".btn-send")
-  .addEventListener("click", validateAndShowModal);
-document
-  .querySelector(".btn-espiar")
-  .addEventListener("click", validateAndShowModal);
+if (!document.getElementById("terms-popup-backdrop")) {
+  const btnSend = document.querySelector(".btn-send");
+  const btnEspiar = document.querySelector(".btn-espiar");
+  if (btnSend) btnSend.addEventListener("click", validateAndShowModal);
+  if (btnEspiar) btnEspiar.addEventListener("click", validateAndShowModal);
+}
 
 function insertVturbVideo() {
   const videoHTML = `

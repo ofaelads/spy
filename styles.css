@@ -64,8 +64,11 @@ img {
     font-size: 18px;
     font-weight: bold;
     padding: 12px 0;
+    min-height: 48px;
     border-radius: 8px;
     transition: 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn-espiar:hover {
