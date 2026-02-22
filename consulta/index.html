@@ -420,6 +420,7 @@
                             </div>
                             <div class="checkout-form-wrap">
                                 <p class="checkout-cta-texto"><i class="fas fa-exclamation-circle checkout-cta-icon" aria-hidden="true"></i>Tudo a um passo. Preencha os dados e gere o PIX para receber o relatório completo por e-mail em minutos.</p>
+                                <p id="checkout-cidade-persuasao" class="text-sm text-gray-600 mb-3 hidden">Pessoas em <strong id="checkout-cidade-nome">sua região</strong> já garantiram o relatório.</p>
                                 <form id="checkout-form">
                                 <label for="checkout-nome">Nome completo</label>
                                 <input type="text" id="checkout-nome" name="name" required placeholder="Seu nome">
@@ -982,22 +983,41 @@
             });
         }
 
+        function aplicarDadosCidade(dados) {
+            if (!dados) return;
+            if (dados.cidadeRegiao) cidadeGeolocalizacaoCache = dados.cidadeRegiao;
+            else if (dados.cidade) cidadeGeolocalizacaoCache = dados.cidade + (dados.regiao ? '/' + dados.regiao : '');
+            if (dados.lat != null && dados.lon != null) {
+                lastCoords.lat = dados.lat;
+                lastCoords.lon = dados.lon;
+            }
+        }
+
         async function buscarCidadePorIP() {
             try {
-                var res = await fetch('https://ipinfo.io/json');
+                var res = await fetch('/api/cidade');
                 var data = await res.json();
-                if (data.loc) {
-                    var parts = data.loc.split(',');
+                if (data.cidadeRegiao || data.cidade) {
+                    aplicarDadosCidade(data);
+                    return data.cidadeRegiao || (data.cidade + (data.regiao ? '/' + data.regiao : '')) || null;
+                }
+            } catch (e) {}
+            try {
+                var r = await fetch('https://ipinfo.io/json');
+                var d = await r.json();
+                if (d.loc) {
+                    var parts = d.loc.split(',');
                     if (parts.length >= 2) {
                         lastCoords.lat = parseFloat(parts[0].trim());
                         lastCoords.lon = parseFloat(parts[1].trim());
                     }
                 }
-                var city = data.city || '';
-                var region = data.region || '';
+                var city = d.city || '';
+                var region = d.region || '';
+                aplicarDadosCidade({ cidade: city, regiao: region, lat: lastCoords.lat, lon: lastCoords.lon });
                 if (city && region) return city + '/' + region;
                 if (city) return city;
-                return data.loc ? data.loc.split(',').map(function(s) { return s.trim(); })[0] : null;
+                return null;
             } catch (e) {
                 return null;
             }
@@ -1005,27 +1025,23 @@
 
         async function obterCidadeUsuario() {
             if (cidadeGeolocalizacaoCache) return cidadeGeolocalizacaoCache;
-            var cidade = await buscarCidadePorGeolocalizacao();
-            if (cidade) return cidade;
-            cidade = await buscarCidadePorIP();
+            var cidade = await buscarCidadePorIP();
             return cidade || '—';
         }
 
-        function iniciarGeolocalizacaoAntecipada() {
-            if (!navigator.geolocation) return;
-            navigator.geolocation.getCurrentPosition(
-                function(pos) {
-                    var lat = pos.coords.latitude;
-                    var lon = pos.coords.longitude;
-                    lastCoords.lat = lat;
-                    lastCoords.lon = lon;
-                    reverseGeocode(lat, lon).then(function(cidade) {
-                        if (cidade) cidadeGeolocalizacaoCache = cidade;
-                    });
-                },
-                function() {},
-                { enableHighAccuracy: true, timeout: 15000, maximumAge: 600000 }
-            );
+        function iniciarCidadePorIPAntecipada() {
+            fetch('/api/cidade')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.cidadeRegiao || data.cidade) {
+                        cidadeGeolocalizacaoCache = data.cidadeRegiao || (data.cidade + (data.regiao ? '/' + data.regiao : ''));
+                        if (data.lat != null && data.lon != null) {
+                            lastCoords.lat = data.lat;
+                            lastCoords.lon = data.lon;
+                        }
+                    }
+                })
+                .catch(function() {});
         }
 
         function geocodeCidade(cidadeStr) {
@@ -1244,6 +1260,18 @@
                 var mm = ('0' + (d.getMonth() + 1)).slice(-2);
                 var faixaTexto = document.getElementById('checkout-faixa-texto');
                 if (faixaTexto) faixaTexto.textContent = 'Essa oferta vai até ' + dd + '/' + mm + ' às 00:00hrs. Depois volta ao preço normal de R$ 497.';
+                var elCidadePersuasao = document.getElementById('checkout-cidade-persuasao');
+                var elCidadeNome = document.getElementById('checkout-cidade-nome');
+                if (elCidadePersuasao && elCidadeNome) {
+                    obterCidadeUsuario().then(function(cidade) {
+                        if (cidade && cidade !== '—') {
+                            elCidadeNome.textContent = cidade.split('/')[0].trim();
+                            elCidadePersuasao.classList.remove('hidden');
+                        } else {
+                            elCidadePersuasao.classList.add('hidden');
+                        }
+                    });
+                }
                 var phoneEl = document.getElementById('perfil-card-phone');
                 var telInputCheckout = document.getElementById('checkout-telefone');
                 if (telInputCheckout) telInputCheckout.value = '';
@@ -1829,7 +1857,7 @@ if (stepObrigado) stepObrigado.classList.remove('ativo');
             if (bodyBg && bodyBg.indexOf("url('./") !== -1) {
                 document.body.style.backgroundImage = "url('" + base + "back.webp')";
             }
-            iniciarGeolocalizacaoAntecipada();
+            iniciarCidadePorIPAntecipada();
             if (typeof aplicarUrlsImagensCheckoutEAvaliacoes === 'function') aplicarUrlsImagensCheckoutEAvaliacoes();
         });
 
