@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+    (function(){
+      var loc = window.location;
+      var base = document.createElement('base');
+      if (loc.protocol === 'file:') {
+        var docUrl = (loc.href || '').split('?')[0].split('#')[0].replace(/\\/g, '/');
+        base.href = docUrl.replace(/\/[^/]*$/, '/') || './';
+      } else {
+        base.href = (loc.pathname || '').indexOf('consulta') !== -1
+          ? loc.origin + '/consulta/'
+          : loc.origin + (loc.pathname || '/').replace(/\/[^/]*$/, '/') || loc.origin + '/';
+      }
+      document.head.appendChild(base);
+    })();
+    </script>
+    <!-- Facebook Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4032005147044935');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=4032005147044935&ev=PageView&noscript=1" alt="" /></noscript>
+    <!-- End Facebook Pixel -->
+    <title>Rastreamento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" crossorigin="anonymous" />
+
+</head>
+
+<body class="bg-cover bg-center font-sans" style="background-image: url('./back.webp');">
+    <span class="dev-badge" aria-hidden="true">DEV</span>
+    <div class="back"></div>
+    <div class="px-4">
+        <div class="max-w-md mx-auto bg-gray-900 text-white rounded-lg shadow-lg mt-6 p-5 text-center">
+
+
+
+
+            <h4 class="text-sm font-bold text-red-600 px-2 py-1 inline-block rounded mb-1">ASSISTA O VÍDEO ENQUANTO</h4>
+            <h1 class="text-2xl font-extrabold text-green-400">o Número é Rastreado</h1>
+            <p class="font-bold text-white">e as conversas são Processadas</p>
+
+
+            <div id="vsl-container" class="bg-black text-white w-full h-48 mt-4 flex items-center justify-center">
+                <div id="vid_67e1711b5a5ec288ee925811" style="position: relative; width: 100%; padding: 56.25% 0 0;"> <img id="thumb_67e1711b5a5ec288ee925811" src="https://images.converteai.net/9581cd38-0dee-4366-bfd7-eeb983591eda/players/67e1711b5a5ec288ee925811/thumbnail.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;" alt="thumbnail">
+                    <div id="backdrop_67e1711b5a5ec288ee925811" style=" -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); position: absolute; top: 0; height: 100%; width: 100%; "></div>
+                </div>
+                <script type="text/javascript" id="scr_67e1711b5a5ec288ee925811"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/9581cd38-0dee-4366-bfd7-eeb983591eda/players/67e1711b5a5ec288ee925811/player.js", s.async = !0, document.head.appendChild(s); </script>
+                <style>
+                    .elementor-element:has(#smartplayer) {
+                        width: 100%;
+                    }
+                </style>
+            </div>
+
+            <div id="foto-container" class="flex justify-center" style="margin-top: 5%; display: none;margin-bottom: -5%;">
+                <div class="foto-perfil">
+                    <img decoding="async" src="./images/loading.gif" id="imgProfile" class="foto-interna">
+                </div>
+            </div>
+
+
+
+            <style>
+                .foto-perfil {
+                    width: 100px;
+                    height: 100px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 100%;
+                    background-image: linear-gradient(320deg, #33bb00, #b8ff20);
+                    margin: 0 0 20px 0;
+                    padding: 2px;
+                }
+
+                .foto-interna {
+                    width: 95%;
+                    height: 95%;
+                    object-fit: cover;
+                    border-radius: 100%;
+                    background-color: white;
+                }
+                .perfil-whatsapp-card.hidden { display: none; }
+                .perfil-card-avatar-blur { filter: blur(3px); }
+                .relatorio-midia-item { position: relative; min-height: 120px; overflow: hidden; border-radius: 0.75rem; }
+                .relatorio-midia-bg-layer { position: absolute; inset: 0; background-size: cover; background-position: center; filter: blur(5px); border-radius: inherit; z-index: 0; }
+                .relatorio-midia-item.relatorio-midia-com-foto::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); border-radius: inherit; pointer-events: none; z-index: 1; }
+                .relatorio-midia-item .relatorio-midia-overlay { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+                .relatorio-foto-conversa.foto-com-blur,
+                .relatorio-foto-conversa.perfil-card-avatar-blur { filter: blur(3px) !important; }
+                .analise-conversa-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: #f3f4f6; border-radius: 0.5rem; flex-wrap: wrap; cursor: pointer; transition: background 0.2s; }
+                .analise-conversa-item:hover { background: #e5e7eb; }
+                @media (max-width: 640px) {
+                    .analise-conversa-item { flex-direction: column; text-align: center; }
+                    .analise-conversa-item .analise-conversa-conteudo { width: 100%; text-align: center; }
+                    .analise-conversa-item .analise-conversa-meta { justify-content: center; width: 100%; }
+                }
+                .analise-conversa-item .relatorio-foto-conversa { filter: blur(3px); }
+                .perfil-whatsapp-btn { background: #22c55e; }
+                .perfil-whatsapp-btn:hover { background: #16a34a; }
+                /* Botões unificados da página */
+                .btn-page { padding: 0.625rem 1rem; font-size: 0.875rem; font-weight: 600; border-radius: 8px; transition: all 0.2s ease; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border: none; }
+                .btn-primary { background: #15803d; color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+                .btn-primary:hover { background: #166534; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+                .btn-secondary { background: #15803d; color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+                .btn-secondary:hover { background: #166534; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+                .btn-choice { background: #15803d; color: white; border: none; min-width: 160px; box-shadow: 0 2px 6px rgba(21, 128, 61, 0.35); font-weight: 600; letter-spacing: 0.02em; }
+                .btn-choice:hover { background: #166534; box-shadow: 0 4px 12px rgba(21, 128, 61, 0.4); transform: translateY(-1px); }
+                .btn-choice:active { transform: translateY(0); box-shadow: 0 1px 3px rgba(21, 128, 61, 0.3); }
+                @keyframes btn-pulse {
+                    0%, 100% { box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+                    50% { box-shadow: 0 0 0 6px rgba(21, 128, 61, 0.25); }
+                }
+                .btn-primary, .btn-secondary { animation: btn-pulse 2s ease-in-out infinite; }
+                .btn-primary:hover, .btn-secondary:hover { animation: none; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+                body.dev-mode #vsl-container { display: none !important; }
+                body.dev-mode .dev-badge { display: block !important; }
+                .dev-badge { display: none; position: fixed; top: 8px; right: 8px; z-index: 9999; background: #22c55e; color: white; font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 6px; }
+                #btn-acesso-total-fixo { position: fixed; bottom: 0; left: 0; right: 0; z-index: 9998; padding: 12px 16px; background: #15803d; color: white; font-size: 1rem; font-weight: 700; border: none; border-radius: 0; box-shadow: 0 -2px 12px rgba(0,0,0,0.2); cursor: pointer; transition: background 0.2s; animation: btn-pulse 2s ease-in-out infinite; }
+                #btn-acesso-total-fixo:hover { background: #166534; animation: none; box-shadow: 0 -2px 16px rgba(0,0,0,0.25); }
+                #btn-acesso-total-fixo.hidden { display: none !important; }
+                /* Modal conversa (estilo WhatsApp) */
+                #modal-conversa-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; overflow-y: auto; }
+                #modal-conversa-backdrop.ativo { opacity: 1; visibility: visible; }
+                #modal-conversa { background: #fff; border-radius: 12px; max-width: 400px; width: 100%; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
+                #modal-conversa .modal-conversa-header { background: #075e54; color: #fff; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
+                #modal-conversa .modal-conversa-header img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; filter: blur(3px); }
+                #modal-conversa .modal-conversa-header .modal-conversa-numero { font-weight: 600; font-size: 0.95rem; flex: 1; }
+                #modal-conversa .modal-conversa-fechar { background: none; border: none; color: #fff; font-size: 1.25rem; cursor: pointer; padding: 4px; line-height: 1; }
+                #modal-conversa .modal-conversa-body { background: #e5ddd5; padding: 16px; flex: 1; min-height: 280px; overflow-y: auto; overflow-x: hidden; }
+                #modal-conversa .modal-conversa-body::after { content: ''; display: table; clear: both; }
+                #modal-conversa .msg { max-width: 85%; margin-bottom: 8px; clear: both; }
+                #modal-conversa .msg.recebida { float: left; }
+                #modal-conversa .msg.enviada { float: right; }
+                #modal-conversa .msg-bolha { padding: 8px 12px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); position: relative; color: #111; font-weight: 500; }
+                #modal-conversa .msg.recebida .msg-bolha { background: #fff; border-top-left-radius: 2px; }
+                #modal-conversa .msg.enviada .msg-bolha { background: #d9fdd3; border-top-right-radius: 2px; }
+                #modal-conversa .msg-bolha.bloqueado { color: #b91c1c; font-weight: 700; font-size: 0.875rem; font-style: italic; letter-spacing: 0.02em; border: 1px dashed rgba(185,28,28,0.5); box-shadow: inset 0 0 0 1px rgba(185,28,28,0.08); }
+                #modal-conversa .msg-bolha.bloqueado .msg-bloqueado-extra { display: block; font-size: 0.7rem; color: #991b1b; font-weight: 600; margin-top: 3px; font-style: normal; }
+                #modal-conversa .msg-hora { font-size: 0.7rem; color: #374151; margin-top: 2px; }
+                #modal-conversa .msg.enviada .msg-hora { text-align: right; }
+                #modal-conversa .modal-conversa-footer { padding: 16px; background: #f0f2f5; border-top: 1px solid #e9edef; }
+                #modal-conversa .modal-conversa-footer p { font-size: 0.8rem; color: #111; margin-bottom: 12px; }
+                #modal-conversa .modal-conversa-footer .btn-desbloquear { width: 100%; padding: 12px; background: #15803d; color: #fff; font-weight: 700; font-size: 0.9rem; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; animation: btn-pulse 2s ease-in-out infinite; }
+                #modal-conversa .modal-conversa-footer .btn-desbloquear:hover { background: #166534; animation: none; }
+                /* Checkout PIX (Blackcat) */
+                #checkout-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 10050; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; overflow-y: auto; }
+                #checkout-modal-backdrop.ativo { opacity: 1; visibility: visible; }
+                #checkout-modal { background: #fff; border-radius: 16px; max-width: 440px; width: 100%; max-height: 90vh; overflow-x: hidden; overflow-y: auto; box-shadow: 0 25px 80px rgba(0,0,0,0.35); border: 1px solid #e5e7eb; }
+                #checkout-modal.checkout-obrigado-visible .checkout-header { display: none; }
+                #checkout-modal.checkout-obrigado-visible .checkout-faixa-alerta { display: none; }
+                .obrigado-fechar-wrap { text-align: right; margin-bottom: 12px; }
+                .obrigado-fechar-wrap .obrigado-btn-fechar { background: none; border: none; color: #6b7280; font-size: 0.9rem; cursor: pointer; padding: 4px 8px; }
+                .obrigado-fechar-wrap .obrigado-btn-fechar:hover { color: #111827; }
+                .checkout-faixa-alerta { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 10px 16px; background: #b91c1c; border-bottom: 2px solid #fca5a5; color: #ffffff; font-size: 0.8rem; font-weight: 700; text-align: center; transform: translateX(100%); transition: transform 1s ease-out; line-height: 1.35; animation: faixa-alerta-pulse 2s ease-in-out infinite; }
+                .checkout-faixa-alerta .checkout-faixa-emoji { font-size: 1.1rem; line-height: 1; }
+                #checkout-modal-backdrop.ativo .checkout-faixa-alerta { transform: translateX(0); transition-delay: 0.4s; }
+                @keyframes faixa-alerta-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.5); } 50% { box-shadow: 0 0 0 6px rgba(185, 28, 28, 0); } }
+                #checkout-modal .checkout-header { background: linear-gradient(135deg, #15803d 0%, #166534 100%); color: #fff; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; border-radius: 16px 16px 0 0; }
+                #checkout-modal .checkout-header h3 { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.02em; }
+                #checkout-modal .checkout-fechar { background: rgba(255,255,255,0.2); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; font-size: 1.4rem; cursor: pointer; padding: 0; line-height: 1; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+                #checkout-modal .checkout-fechar:hover { background: rgba(255,255,255,0.3); }
+                #checkout-modal .checkout-body { padding: 0; }
+                #checkout-modal .checkout-trust-bar { padding: 14px 20px; background: #f8faf8; border-bottom: 1px solid #e5e7eb; }
+                #checkout-modal .checkout-trust-bar img { width: 100%; height: auto; max-height: 52px; object-fit: contain; display: block; }
+                #checkout-modal .checkout-trust-badges { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px 14px; }
+                #checkout-modal .checkout-trust-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; background: #fff; border: 1px solid #d1fae5; border-radius: 8px; font-size: 0.7rem; font-weight: 700; color: #166534; text-transform: uppercase; letter-spacing: 0.03em; }
+                #checkout-modal .checkout-trust-badge i { color: #15803d; font-size: 0.9rem; }
+                #checkout-modal .checkout-avaliacoes { padding: 14px 20px; border-bottom: 1px solid #e5e7eb; background: #fff; }
+                #checkout-modal .checkout-avaliacoes h4 { font-size: 0.8rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px; }
+                #checkout-modal .checkout-avaliacoes .social-proof-track { padding-bottom: 6px; gap: 10px; margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+                #checkout-modal .checkout-avaliacoes .social-proof-card { flex: 0 0 240px; padding: 12px; font-size: 0.8rem; text-align: center; }
+                #checkout-modal .checkout-avaliacoes .social-proof-card .avatar { width: 40px; height: 40px; font-size: 0.75rem; margin: 0 auto 6px; border-radius: 50%; overflow: hidden; position: relative; }
+                #checkout-modal .checkout-avaliacoes .social-proof-card .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+                #checkout-modal .checkout-avaliacoes .social-proof-card .avatar .avatar-fallback { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: #86efac; color: #166534; font-size: 0.75rem; }
+                #checkout-modal .checkout-avaliacoes .social-proof-card .nome { font-size: 0.8rem; }
+                #checkout-modal .checkout-avaliacoes .social-proof-card .texto { font-size: 0.78rem; line-height: 1.35; }
+                #checkout-modal .checkout-avaliacoes .social-proof-card .tempo { font-size: 0.7rem; }
+                #checkout-modal .checkout-garantia-wrap { padding: 14px 20px; background: #fffbeb; border-bottom: 1px solid #fde68a; text-align: center; }
+                #checkout-modal .checkout-garantia-wrap img { width: 80px; height: 80px; object-fit: contain; display: inline-block; }
+                #checkout-modal .checkout-garantia-wrap p { margin: 6px 0 0; font-size: 0.8rem; font-weight: 600; color: #92400e; }
+                #checkout-modal .checkout-form-wrap { padding: 20px; }
+                #checkout-modal .checkout-cta-texto { margin: 0 0 16px; padding: 12px 14px 12px 40px; background: #fffbeb; border: 1px solid #f59e0b; border-left: 4px solid #d97706; border-radius: 8px; font-size: 0.9rem; line-height: 1.45; color: #92400e; font-weight: 700; position: relative; }
+#checkout-modal .checkout-cta-texto .checkout-cta-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #d97706; font-size: 1.1rem; }
+                #checkout-modal .checkout-garantia-abaixo { text-align: center; }
+                #checkout-modal .checkout-img-garantia-abaixo { max-width: 80px; height: auto; display: inline-block; object-fit: contain; }
+                #checkout-modal .checkout-seguro-rodape { text-align: center; font-size: 0.75rem; color: #6b7280; margin: 12px 0 0; display: flex; align-items: center; justify-content: center; gap: 6px; }
+                #checkout-modal .checkout-seguro-rodape i { color: #15803d; }
+                #checkout-modal .checkout-step { display: none; }
+                #checkout-modal .checkout-step.ativo { display: block; }
+                .obrigado-check-icon { width: 64px; height: 64px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; background: #dcfce7; color: #15803d; border-radius: 50%; font-size: 2.5rem; }
+                .obrigado-titulo { font-size: 1.25rem; font-weight: 700; color: #15803d; text-align: center; margin-bottom: 6px; }
+                .obrigado-subtitulo { font-size: 0.95rem; color: #374151; text-align: center; margin-bottom: 24px; }
+                .obrigado-upsell { background: #fef2f2; border: 2px solid #b91c1c; border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+                .obrigado-upsell .obrigado-upsell-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; margin-bottom: 10px; text-align: center; }
+                .obrigado-upsell .obrigado-upsell-emoji { font-size: 1.5rem; }
+                .obrigado-upsell h4 { font-size: 1rem; font-weight: 700; color: #b91c1c; margin: 0; }
+                .obrigado-upsell .info-vazadas { background: #fff; border: 1px solid #fecaca; border-radius: 8px; padding: 12px; margin: 10px 0; }
+                .obrigado-upsell .info-vazadas .alerta-vazamento { background: #b91c1c; color: #fff; padding: 10px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; margin-top: 8px; }
+                .obrigado-upsell .info-vazadas p { margin: 4px 0; font-size: 0.85rem; color: #374151; }
+                .obrigado-upsell .texto-risco { font-size: 0.85rem; color: #4b5563; line-height: 1.45; margin: 12px 0; }
+                .obrigado-upsell .btn-proteger { width: 100%; padding: 14px; background: #15803d; color: #fff; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; margin-top: 8px; }
+                .obrigado-upsell .btn-proteger:hover { background: #166534; }
+                .obrigado-upsell .link-vulneravel { display: block; width: 100%; text-align: center; margin-top: 12px; font-size: 0.9rem; color: #b91c1c; text-decoration: underline; cursor: pointer; background: none; border: none; padding: 4px 0; }
+                .obrigado-upsell .link-vulneravel:hover { color: #991b1b; }
+                .obrigado-upsell .link-vulneravel-sub { font-size: 0.75rem; color: #9ca3af; margin-top: 4px; text-align: center; }
+                #upsell1-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 10060; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; }
+                #upsell1-modal-backdrop.ativo { opacity: 1; visibility: visible; }
+                #upsell1-modal { background: #fff; border-radius: 16px; max-width: 400px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 25px 80px rgba(0,0,0,0.35); padding: 24px; }
+                #upsell1-modal h3 { margin: 0 0 4px; font-size: 1.2rem; font-weight: 700; color: #111827; }
+                #upsell1-modal .upsell1-preco { font-size: 1rem; font-weight: 700; color: #15803d; margin-bottom: 16px; }
+                #upsell1-modal label { display: block; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 4px; }
+                #upsell1-modal input { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; margin-bottom: 12px; box-sizing: border-box; }
+                #upsell1-modal input:focus { outline: none; border-color: #15803d; }
+                #upsell1-modal .upsell1-btn-pagar { width: 100%; padding: 14px; background: #15803d; color: #fff; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; font-size: 1.05rem; margin-top: 8px; }
+                #upsell1-modal .upsell1-btn-pagar:hover { background: #166534; }
+                #upsell1-modal .upsell1-pix { text-align: center; }
+                #upsell1-modal .upsell1-pix img { max-width: 200px; margin: 0 auto 8px; display: block; }
+                #upsell1-modal .upsell1-erro { background: #fef2f2; color: #b91c1c; padding: 10px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 12px; display: none; }
+                #upsell1-modal .upsell1-fechar-wrap { margin-top: 16px; text-align: center; }
+                #upsell1-modal #upsell1-fechar { margin-top: 0; background: #f3f4f6; color: #6b7280; }
+                #checkout-modal label { display: block; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 4px; }
+                #checkout-modal input { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; margin-bottom: 12px; box-sizing: border-box; }
+                #checkout-modal input:focus { outline: none; border-color: #15803d; }
+                #checkout-modal .btn-gerar-pix { width: 100%; padding: 12px; background: #15803d; color: #fff; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; margin-top: 8px; }
+                #checkout-modal .btn-gerar-pix:hover { background: #166534; }
+                #checkout-modal .btn-gerar-pix:disabled { opacity: 0.7; cursor: not-allowed; }
+                @keyframes checkout-pulse {
+                    0%, 100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.5); }
+                    50% { box-shadow: 0 0 0 12px rgba(21, 128, 61, 0); }
+                }
+                #checkout-modal .btn-gerar-pix-pulse { animation: checkout-pulse 1.8s ease-in-out infinite; }
+                #checkout-modal .btn-gerar-pix-pulse:disabled { animation: none; }
+                #checkout-modal .checkout-seguro-img-wrap { margin-top: 12px; text-align: center; }
+                #checkout-modal .checkout-seguro-img-wrap .checkout-img-seguro { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; object-fit: contain; }
+                #checkout-modal .checkout-pix { text-align: center; }
+                #checkout-modal .checkout-pix img { max-width: 220px; height: auto; margin: 0 auto 12px; display: block; }
+                #checkout-modal .checkout-pix .pix-copia { font-size: 0.8rem; color: #6b7280; margin-bottom: 6px; }
+                #checkout-modal .checkout-pix textarea { width: 100%; height: 80px; padding: 8px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.75rem; resize: none; margin-bottom: 8px; box-sizing: border-box; }
+                #checkout-modal .checkout-pix .btn-copiar { padding: 8px 16px; background: #e5e7eb; color: #111; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
+                #checkout-modal .checkout-pix .aguardando { color: #15803d; font-weight: 600; margin-top: 12px; font-size: 0.9rem; }
+                #checkout-modal .checkout-pix .sucesso { color: #15803d; font-weight: 700; margin-top: 12px; font-size: 1rem; }
+                #checkout-modal .checkout-pix .pix-trust { margin-top: 14px; font-size: 0.75rem; color: #6b7280; display: flex; align-items: center; justify-content: center; gap: 6px; }
+                #checkout-modal .checkout-pix .pix-trust i { color: #15803d; }
+                #checkout-modal .checkout-erro { background: #fef2f2; color: #b91c1c; padding: 10px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 12px; display: none; }
+                .checkout-selos { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+                .checkout-selo { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; font-size: 0.8rem; font-weight: 600; color: #166534; }
+                .checkout-selo i { color: #15803d; }
+                .order-bump-section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #6b7280; margin-bottom: 10px; }
+                .order-bump { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: border-color 0.2s, box-shadow 0.2s; }
+                .order-bump:hover { border-color: #d1d5db; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+                .order-bump-inner { display: flex; gap: 14px; align-items: flex-start; }
+                .order-bump img { width: 56px; height: 56px; object-fit: contain; border-radius: 10px; flex-shrink: 0; background: #f9fafb; }
+                .order-bump-content { flex: 1; min-width: 0; }
+                .order-bump-title { font-weight: 700; color: #111827; font-size: 0.95rem; line-height: 1.3; margin-bottom: 6px; letter-spacing: -0.01em; }
+                .order-bump-desc { font-size: 0.82rem; color: #4b5563; line-height: 1.45; margin-bottom: 10px; }
+                .order-bump-footer { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px; }
+                .order-bump-preco { font-weight: 700; color: #15803d; font-size: 1.05rem; letter-spacing: -0.02em; }
+                .order-bump-aceito { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; padding: 10px 18px; margin: 0; border-radius: 8px; background: #15803d; color: #ffffff; font-size: 0.9rem; font-weight: 700; border: none; transition: background 0.2s; box-shadow: 0 1px 3px rgba(21, 128, 61, 0.3); animation: order-bump-btn-pulse 2s ease-in-out infinite; }
+                .order-bump-aceito:hover { background: #166534; }
+                .order-bump-aceito:has(input:checked) { background: #14532d; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4); animation: none; }
+                .order-bump-aceito input { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; min-width: 14px; min-height: 14px; margin: 0; flex-shrink: 0; cursor: pointer; box-sizing: border-box; border: 2px solid rgba(255,255,255,0.9); border-radius: 3px; background: transparent; transition: background 0.15s, border-color 0.15s; }
+                .order-bump-aceito input:checked { background: #ffffff; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath fill='%2315803d' d='M4 8L1 5l1.5-1.5L4 5.5 9.5 0 11 1.5L4 8z'/%3E%3C/svg%3E"); background-size: 10px 8px; background-repeat: no-repeat; background-position: center; }
+                .order-bump-aceito span { font-size: 0.9rem; font-weight: 700; color: #ffffff; }
+                @keyframes order-bump-btn-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.45); } 50% { box-shadow: 0 0 0 8px rgba(21, 128, 61, 0); } }
+                .social-proof-section { margin: 1.5rem 0; }
+                .social-proof-title { font-weight: 700; color: #111; margin-bottom: 12px; font-size: 1rem; }
+                .social-proof-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+                .social-proof-track::-webkit-scrollbar { height: 6px; }
+                .social-proof-track::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+                .social-proof-card { flex: 0 0 280px; scroll-snap-align: start; background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border: 1px solid #e5e7eb; text-align: center; }
+                .social-proof-card .avatar { width: 48px; height: 48px; border-radius: 50%; background: #86efac; color: #166534; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; overflow: hidden; flex-shrink: 0; position: relative; }
+                .social-proof-card .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+                .social-proof-card .avatar .avatar-fallback { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: #86efac; color: #166534; font-size: 0.9rem; }
+                .social-proof-card .nome { font-weight: 700; color: #111; font-size: 0.9rem; }
+                .social-proof-card .estrelas { color: #eab308; font-size: 0.85rem; margin: 4px 0; }
+                .social-proof-card .texto { font-size: 0.85rem; color: #374151; line-height: 1.4; text-align: center; }
+                .social-proof-card .tempo { font-size: 0.75rem; color: #9ca3af; margin-top: 6px; text-align: center; }
+                .faq-section { margin: 1.5rem 0; }
+                .faq-title { font-weight: 700; color: #111; text-align: center; margin-bottom: 14px; font-size: 1.1rem; }
+                .faq-item { background: #f9fafb; border-radius: 8px; margin-bottom: 8px; overflow: hidden; border: 1px solid #e5e7eb; }
+                .faq-pergunta { width: 100%; padding: 14px 16px; text-align: left; font-weight: 600; color: #111; font-size: 0.9rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+                .faq-pergunta i { color: #15803d; transition: transform 0.2s; }
+                .faq-item.aberto .faq-pergunta i { transform: rotate(45deg); }
+                .faq-resposta { padding: 0 16px 14px; font-size: 0.85rem; color: #4b5563; line-height: 1.5; display: none; }
+                .faq-item.aberto .faq-resposta { display: block; }
+                .garantia-badge { display: block; margin: 16px auto; width: 120px; height: 120px; object-fit: contain; }
+                #dropsell-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 10100; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; }
+                #dropsell-modal-backdrop.ativo { opacity: 1; visibility: visible; }
+                #dropsell-modal { background: #fff; border-radius: 16px; max-width: 400px; width: 100%; box-shadow: 0 25px 80px rgba(0,0,0,0.35); overflow: hidden; }
+                #dropsell-modal .dropsell-header { background: #15803d; color: #fff; padding: 16px; text-align: center; }
+                #dropsell-modal .dropsell-header h3 { margin: 0; font-size: 1.1rem; }
+                #dropsell-modal .dropsell-body { padding: 20px; }
+                #dropsell-modal .dropsell-beneficios { list-style: none; padding: 0; margin: 0 0 16px; }
+                #dropsell-modal .dropsell-beneficios li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.9rem; color: #374151; }
+                #dropsell-modal .dropsell-beneficios li i { color: #15803d; }
+                #dropsell-modal .dropsell-preco { text-align: center; margin: 16px 0; }
+                #dropsell-modal .dropsell-preco .antigo { text-decoration: line-through; color: #6b7280; font-size: 1rem; }
+                #dropsell-modal .dropsell-preco .atual { font-size: 1.5rem; font-weight: 800; color: #15803d; }
+                #dropsell-modal .btn-dropsell { width: 100%; padding: 14px; background: #15803d; color: #fff; font-weight: 700; font-size: 1rem; border: none; border-radius: 10px; cursor: pointer; }
+                #dropsell-modal .btn-dropsell:hover { background: #166534; }
+                #dropsell-modal .dropsell-recusar { display: block; text-align: center; margin-top: 12px; font-size: 0.85rem; color: #9ca3af; text-decoration: underline; cursor: pointer; }
+            </style>
+            <div class="w-full mt-4 bg-gray-200 rounded-full overflow-hidden h-4">
+
+                <div id="progress-bar" class="h-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-bold text-center transition-all duration-300" style="width: 0%;">
+                    0%
+                </div>
+            </div>
+
+            <p class="mt-2 text-sm"><b>Aguarde</b>, o Whatsapp informado está sendo espionado.</p>
+            <p class="text-xs text-green-400">Essa análise pode durar até <b>5 minutos</b></p>
+
+            <!-- Pergunta segurança: Esposo / Esposa (antes do card) -->
+            <div id="pergunta-seguranca" class="hidden mt-6">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-gray-800 text-center">
+                    <p class="text-base md:text-lg font-medium text-gray-900 mb-4">Por questões de segurança, essa pessoa é sua <strong>esposa</strong> ou seu <strong>esposo</strong>?</p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <button type="button" id="btn-esposo" class="btn-page btn-choice py-2.5">Esposo</button>
+                        <button type="button" id="btn-esposa" class="btn-page btn-choice py-2.5">Esposa</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão fixo (aparece só após escolher Esposo/Esposa) -->
+            <button type="button" id="btn-acesso-total-fixo" class="hidden" aria-hidden="true">Acesso Total por 49,90</button>
+
+            <!-- Modal conversa (abre ao clicar em uma conversa) -->
+            <div id="modal-conversa-backdrop" aria-hidden="true">
+                <div id="modal-conversa" onclick="event.stopPropagation()">
+                    <div class="modal-conversa-header">
+                        <button type="button" class="modal-conversa-fechar" id="modal-conversa-fechar" aria-label="Fechar">&times;</button>
+                        <img id="modal-conversa-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle fill='%239ca3af' cx='20' cy='20' r='20'/%3E%3C/svg%3E" alt="">
+                        <span class="modal-conversa-numero" id="modal-conversa-numero">+55 67 9XXXX-XXXX</span>
+                    </div>
+                    <div class="modal-conversa-body">
+                        <div id="modal-conversa-msgs"></div>
+                    </div>
+                    <div class="modal-conversa-footer">
+                        <p>Para visualizar a conversa completa, você precisa desbloquear as conversas.</p>
+                        <button type="button" class="btn-desbloquear btn-cta-checkout"><i class="fas fa-lock"></i> DESBLOQUEAR CONVERSAS COMPLETAS</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Checkout PIX (Blackcat) -->
+            <div id="checkout-modal-backdrop" aria-hidden="true">
+                <div id="checkout-modal" onclick="event.stopPropagation()">
+                    <div class="checkout-header">
+                        <h3>Pagamento PIX · R$ 49,90</h3>
+                        <button type="button" class="checkout-fechar" id="checkout-fechar" aria-label="Fechar">&times;</button>
+                    </div>
+                    <div class="checkout-faixa-alerta" id="checkout-faixa-alerta" role="alert">
+                        <span class="checkout-faixa-emoji" aria-hidden="true">⚠️</span>
+                        <span id="checkout-faixa-texto">Essa oferta vai até hoje às 00:00hrs. Depois volta ao preço normal de R$ 497.</span>
+                    </div>
+                    <div class="checkout-body">
+                        <div id="checkout-erro" class="checkout-erro"></div>
+                        <div id="checkout-step-form" class="checkout-step ativo">
+                            <div class="checkout-avaliacoes">
+                                <h4>Avaliações de quem comprou</h4>
+                                <div class="social-proof-track" role="region" aria-label="Avaliações - arraste para o lado">
+                                    <div class="social-proof-card">
+                                        <div class="avatar"><img data-src="./images/avaliacoes/carlos-perfil.jpg" src="./images/avaliacoes/carlos-perfil.jpg" alt="Carla" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">CP</span></div>
+                                        <div class="nome">Carla P.</div>
+                                        <div class="estrelas">★★★★★</div>
+                                        <p class="texto">Achei vídeo dele no carro com outra. Fim de novela.</p>
+                                        <div class="tempo">há 55 min</div>
+                                    </div>
+                                    <div class="social-proof-card">
+                                        <div class="avatar"><img data-src="./images/avaliacoes/marina-perfil.jpg" src="./images/avaliacoes/marina-perfil.jpg" alt="Marina" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">MR</span></div>
+                                        <div class="nome">Marina R.</div>
+                                        <div class="estrelas">★★★★★</div>
+                                        <p class="texto">Relatório veio completo e em minutos. Recomendo.</p>
+                                        <div class="tempo">há 2 h</div>
+                                    </div>
+                                    <div class="social-proof-card">
+                                        <div class="avatar"><img data-src="./images/avaliacoes/joao-perfil.jpg" src="./images/avaliacoes/joao-perfil.jpg" alt="João" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">JL</span></div>
+                                        <div class="nome">João L.</div>
+                                        <div class="estrelas">★★★★★</div>
+                                        <p class="texto">Conversas eram exatamente o que eu suspeitava.</p>
+                                        <div class="tempo">ontem</div>
+                                    </div>
+                                    <div class="social-proof-card">
+                                        <div class="avatar"><img data-src="./images/avaliacoes/pedro-perfil.webp" src="./images/avaliacoes/pedro-perfil.webp" alt="Pedro" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">PS</span></div>
+                                        <div class="nome">Pedro S.</div>
+                                        <div class="estrelas">★★★★★</div>
+                                        <p class="texto">Rápido e discreto. Em 10 min já tava com tudo que precisava, ninguém nem desconfiou.</p>
+                                        <div class="tempo">há 3 h</div>
+                                    </div>
+                                    <div class="social-proof-card">
+                                        <div class="avatar"><img data-src="./images/avaliacoes/ricardo-perfil.jpg" src="./images/avaliacoes/ricardo-perfil.jpg" alt="Ricardo" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">RM</span></div>
+                                        <div class="nome">Ricardo M.</div>
+                                        <div class="estrelas">★★★★★</div>
+                                        <p class="texto">Cara, valeu cada centavo. Descobri a parada toda em menos de 1 hora, ficou tudo na minha mão.</p>
+                                        <div class="tempo">há 6 h</div>
+                                    </div>
+                                    <div class="social-proof-card">
+                                        <div class="avatar"><img data-src="./images/avaliacoes/juliana-perfil.jpg" src="./images/avaliacoes/juliana-perfil.jpg" alt="Juliana" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">JF</span></div>
+                                        <div class="nome">Juliana F.</div>
+                                        <div class="estrelas">★★★★★</div>
+                                        <p class="texto">Nossa, que alívio. Tava na dúvida e em 1 dia já tinha a resposta. Super fácil e ninguém fica sabendo.</p>
+                                        <div class="tempo">ontem</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout-form-wrap">
+                                <p class="checkout-cta-texto"><i class="fas fa-exclamation-circle checkout-cta-icon" aria-hidden="true"></i>Tudo a um passo. Preencha os dados e gere o PIX para receber o relatório completo por e-mail em minutos.</p>
+                                <form id="checkout-form">
+                                <label for="checkout-nome">Nome completo</label>
+                                <input type="text" id="checkout-nome" name="name" required placeholder="Seu nome">
+                                <label for="checkout-email">E-mail</label>
+                                <input type="email" id="checkout-email" name="email" required placeholder="seu@email.com">
+                                <label for="checkout-telefone">Telefone (com DDD)</label>
+                                <input type="tel" id="checkout-telefone" name="phone" required placeholder="(00) 00000-0000">
+                                <label for="checkout-cpf">CPF (apenas números)</label>
+                                <input type="text" id="checkout-cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
+                                <button type="submit" class="btn-gerar-pix btn-gerar-pix-pulse" id="btn-gerar-pix">Gerar PIX</button>
+                                <div class="checkout-seguro-img-wrap">
+                                    <img id="checkout-img-seguro" class="checkout-img-seguro" data-src="./images/seguro-e-confiavel.png" src="./images/seguro-e-confiavel.png" alt="Site seguro, SSL certificado, Compra 100% segura" onerror="this.style.display='none'">
+                                </div>
+                                <p class="order-bump-section-label mt-3">Complementos opcionais para você</p>
+                                <div class="order-bump" id="order-bump-1">
+                                    <div class="order-bump-inner">
+                                        <img src="./images/antirastreio-orderbump.png" alt="Anti-Rastreio" onerror="this.style.display='none'">
+                                        <div class="order-bump-content">
+                                            <div class="order-bump-title">Proteja sua privacidade: Guia Anti-Rastreio</div>
+                                            <p class="order-bump-desc">Evite que seu celular seja rastreado. Um passo a passo em linguagem simples; você aplica em minutos e aumenta sua segurança sem complicação.</p>
+                                            <div class="order-bump-footer">
+                                                <span class="order-bump-preco">R$ 9,90</span>
+                                                <label class="order-bump-aceito">
+                                                    <input type="checkbox" name="order_bump_antirastreio" value="990" id="ob-antirastreio">
+                                                    <span>Sim, quero adicionar</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="order-bump" id="order-bump-2">
+                                    <div class="order-bump-inner">
+                                        <img src="./images/whatsapp-orderbump.png" alt="WhatsApp" onerror="this.style.display='none'">
+                                        <div class="order-bump-content">
+                                            <div class="order-bump-title">Guia WhatsApp Sigiloso: acesso com total discrição</div>
+                                            <p class="order-bump-desc">Aprenda a manter sua identidade protegida ao acessar conversas e mídias. Técnicas práticas e objetivas para você usar com segurança.</p>
+                                            <div class="order-bump-footer">
+                                                <span class="order-bump-preco">R$ 14,90</span>
+                                                <label class="order-bump-aceito">
+                                                    <input type="checkbox" name="order_bump_whatsapp" value="1490" id="ob-whatsapp">
+                                                    <span>Sim, quero adicionar</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-gerar-pix btn-gerar-pix-pulse mt-3" id="btn-gerar-pix-2">Gerar PIX</button>
+                                <div class="checkout-garantia-abaixo mt-3">
+                                    <img data-src="./images/garantia-90dias.png" src="./images/garantia-90dias.png" alt="90 dias de garantia" class="checkout-img-garantia-abaixo" onerror="this.style.display='none'">
+                                </div>
+                                <p class="checkout-seguro-rodape">Faça seu pagamento aqui mesmo: é rápido e 100% seguro. Em poucos minutos você recebe o acesso completo por e-mail. Ambiente protegido e sigiloso; ninguém além de você terá o link.</p>
+                            </form>
+                            </div>
+                        </div>
+                        <div id="checkout-step-pix" class="checkout-step">
+                            <div class="checkout-pix">
+                                <p class="pix-copia">Escaneie o QR Code ou copie o código PIX:</p>
+                                <img id="checkout-qrcode" src="" alt="QR Code PIX" style="display: none;">
+                                <textarea id="checkout-codigo-pix" readonly></textarea>
+                                <button type="button" class="btn-copiar" id="checkout-btn-copiar">Copiar código PIX</button>
+                                <p id="checkout-aguardando" class="aguardando">Aguardando pagamento...</p>
+                                <p id="checkout-sucesso" class="sucesso" style="display: none;">Pagamento confirmado!</p>
+                                <p class="pix-trust"><i class="fas fa-lock"></i> Ambiente 100% seguro</p>
+                            </div>
+                        </div>
+                        <div id="checkout-step-obrigado" class="checkout-step">
+                            <div class="checkout-body" style="padding: 20px;">
+                                <div class="obrigado-fechar-wrap"><button type="button" class="obrigado-btn-fechar" id="obrigado-btn-fechar" aria-label="Fechar">× Fechar</button></div>
+                                <div class="obrigado-check-icon" aria-hidden="true"><i class="fas fa-check"></i></div>
+                                <p class="obrigado-titulo">Obrigado!</p>
+                                <p class="obrigado-subtitulo">Recebemos seu pagamento. Em minutos o relatório chegará no seu e-mail.</p>
+                                <div class="obrigado-upsell" id="obrigado-upsell1">
+                                    <div class="obrigado-upsell-header">
+                                        <span class="obrigado-upsell-emoji" aria-hidden="true">⚠️</span>
+                                        <h4>Atenção</h4>
+                                    </div>
+                                    <p style="font-weight: 700; color: #b91c1c; margin-bottom: 10px;">Notamos que seu celular está vulnerável.</p>
+                                    <div class="info-vazadas">
+                                        <p style="font-weight: 600; margin-bottom: 6px;">Suas informações vazadas</p>
+                                        <p><strong>Nome:</strong> <span id="obrigado-nome">—</span></p>
+                                        <p><strong>CPF:</strong> <span id="obrigado-cpf">—</span></p>
+                                        <p><strong>WhatsApp:</strong> <span id="obrigado-whatsapp">—</span></p>
+                                        <p class="alerta-vazamento">🚨 As informações do seu aparelho estão vazadas em cerca de 15 sites maliciosos na internet.</p>
+                                    </div>
+                                    <p class="texto-risco">Com essas informações, invasores podem clonar seu número, acessar conversas, imagens e rastrear sua localização.</p>
+                                    <p style="font-weight: 700; color: #111827; margin-bottom: 6px;">O que recomendamos?</p>
+                                    <p class="texto-risco">Há diversos casos de golpes no Brasil praticados com dados pessoais expostos. Aplique regras de segurança no seu celular, recomendadas pelo mercado de segurança.</p>
+                                    <p class="texto-risco" style="color: #15803d;"><i class="fas fa-bolt"></i> Processo feito remotamente para você.</p>
+                                    <button type="button" class="btn-proteger" id="btn-upsell1-proteger">Proteger meu celular · R$ 28,90</button>
+                                    <button type="button" class="link-vulneravel" id="btn-upsell1-recusar">Eu quero ficar vulnerável</button>
+                                    <p class="link-vulneravel-sub">(Altamente não recomendável)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="checkout-step-obrigado-2" class="checkout-step">
+                            <div class="checkout-body" style="padding: 20px;">
+                                <div class="obrigado-fechar-wrap"><button type="button" class="obrigado-btn-fechar" id="obrigado2-btn-fechar" aria-label="Fechar">× Fechar</button></div>
+                                <p class="obrigado-titulo">Obrigado novamente!</p>
+                                <p class="obrigado-subtitulo">Você receberá o acesso à proteção por e-mail em breve.</p>
+                                <p class="texto-risco" style="text-align: center;">Upsell 2 em breve.</p>
+                                <button type="button" class="btn-proteger" id="btn-fechar-obrigado-2" style="max-width: 200px; margin: 16px auto 0; display: block;">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Upsell 1 (Proteger celular R$ 28,90) -->
+            <div id="upsell1-modal-backdrop" aria-hidden="true">
+                <div id="upsell1-modal" onclick="event.stopPropagation()">
+                    <h3>Proteger meu celular</h3>
+                    <p class="upsell1-preco">R$ 28,90 · Pagamento via PIX</p>
+                    <div id="upsell1-erro" class="upsell1-erro"></div>
+                    <div id="upsell1-form-wrap">
+                        <p class="texto-risco" style="font-size: 0.85rem; margin-bottom: 14px;">Preencha os dados abaixo e gere o PIX para pagar.</p>
+                        <form id="upsell1-form">
+                            <label for="upsell1-nome">Nome completo</label>
+                            <input type="text" id="upsell1-nome" required placeholder="Seu nome">
+                            <label for="upsell1-email">E-mail</label>
+                            <input type="email" id="upsell1-email" required placeholder="seu@email.com">
+                            <label for="upsell1-telefone">Telefone (com DDD)</label>
+                            <input type="tel" id="upsell1-telefone" required placeholder="(00) 00000-0000">
+                            <label for="upsell1-cpf">CPF (apenas números)</label>
+                            <input type="text" id="upsell1-cpf" required placeholder="000.000.000-00" maxlength="14">
+                            <button type="submit" class="upsell1-btn-pagar" id="upsell1-btn-gerar"><i class="fas fa-qrcode"></i> Gerar PIX e pagar R$ 28,90</button>
+                        </form>
+                    </div>
+                    <div id="upsell1-pix-wrap" class="upsell1-pix" style="display: none;">
+                        <p class="pix-copia">Escaneie o QR Code ou copie o código PIX para pagar R$ 28,90:</p>
+                        <img id="upsell1-qrcode" src="" alt="QR Code PIX" style="display: none;">
+                        <textarea id="upsell1-codigo-pix" readonly style="width: 100%; height: 80px; padding: 8px; font-size: 0.75rem; margin-bottom: 8px; box-sizing: border-box;"></textarea>
+                        <button type="button" id="upsell1-btn-copiar" style="padding: 10px 16px; background: #15803d; color: #fff; font-weight: 600; border: none; border-radius: 8px; cursor: pointer;">Copiar código PIX</button>
+                        <p id="upsell1-aguardando" class="aguardando">Aguardando pagamento...</p>
+                        <p id="upsell1-sucesso" class="sucesso" style="display: none;">Pagamento confirmado!</p>
+                    </div>
+                    <div class="upsell1-fechar-wrap">
+                        <button type="button" id="upsell1-fechar">Fechar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Drop-Sell (última chance R$ 29,90) -->
+            <div id="dropsell-modal-backdrop" aria-hidden="true">
+                <div id="dropsell-modal" onclick="event.stopPropagation()">
+                    <div class="dropsell-header">
+                        <h3>ATENÇÃO: ÚLTIMA CHANCE</h3>
+                    </div>
+                    <div class="dropsell-body">
+                        <p class="text-gray-700 text-sm mb-4">Estamos liberando um desconto exclusivo <strong>agora</strong>, apenas para quem realmente se importa com a verdade. Não perca o acesso ao relatório completo.</p>
+                        <ul class="dropsell-beneficios">
+                            <li><i class="fas fa-map-marker-alt"></i> Localização em tempo real</li>
+                            <li><i class="fab fa-whatsapp"></i> Conversas do WhatsApp completa</li>
+                            <li><i class="fas fa-user-secret"></i> Acesso sigiloso</li>
+                            <li><i class="fas fa-shield-alt"></i> Proteção contra clonagem</li>
+                        </ul>
+                        <div class="dropsell-preco">
+                            <span class="antigo">R$ 97,00</span>
+                            <span class="atual d-block mt-1">R$ 29,90</span>
+                        </div>
+                        <button type="button" class="btn-dropsell" id="btn-dropsell-cta">Liberar com desconto</button>
+                        <a href="#" class="dropsell-recusar" id="dropsell-recusar">Não, perder essa oferta exclusiva</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perfil WhatsApp + seções (exibidos após escolher Esposo/Esposa) -->
+            <div id="bloco-perfil-e-relatorio" class="hidden">
+            <div id="perfil-whatsapp-card" class="perfil-whatsapp-card mt-6">
+                <div class="perfil-whatsapp-inner bg-white rounded-xl shadow-lg overflow-hidden text-gray-800 text-center md:text-left">
+                    <div class="p-4 flex flex-col md:flex-row items-center md:items-start gap-3 border-b border-gray-200">
+                        <div class="perfil-whatsapp-avatar flex-shrink-0">
+                            <img id="perfil-card-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234a5568' width='100' height='100'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%236b7280'/%3E%3Cellipse cx='50' cy='88' rx='30' ry='22' fill='%236b7280'/%3E%3C/svg%3E" alt="" class="w-14 h-14 rounded-full object-cover border-2 border-green-500 perfil-card-avatar-blur" data-esposo="./images/relatorio/esposo-1.png" data-esposa="./images/relatorio/esposa-1.jpg">
+                        </div>
+                        <div class="min-w-0 flex-1 w-full">
+                            <h3 class="font-bold text-lg text-gray-900">Perfil WhatsApp</h3>
+                            <p id="perfil-card-phone" class="text-sm text-gray-600">(00) 0 0000-0000</p>
+                            <p class="text-xs text-green-600 flex items-center justify-center md:justify-start gap-1 mt-0.5">
+                                <span class="w-2 h-2 rounded-full bg-green-500 inline-block"></span>
+                                Online há poucos minutos
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-3">
+                        <div class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-map-marker-alt text-gray-400 mt-0.5 flex-shrink-0"></i>
+                            <div class="text-center md:text-left">
+                                <p class="text-xs text-gray-500">Motel visitado em:</p>
+                                <p id="perfil-card-cidade" class="font-bold text-gray-900">—</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-mobile-alt text-gray-400 mt-0.5 flex-shrink-0"></i>
+                            <div class="text-center md:text-left">
+                                <p class="text-xs text-gray-500">Status do dispositivo</p>
+                                <p class="font-bold text-gray-900">Ativo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button type="button" id="perfil-card-btn-relatorio" class="btn-page btn-primary w-full py-2.5">
+                            <i class="fas fa-chart-line text-sm"></i>
+                            Acessar relatório
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seções abaixo do botão (referência anexos) -->
+            <div class="relatorio-secoes mt-6 space-y-6 max-w-md mx-auto">
+                <!-- Análise de Conversas -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden text-gray-800 p-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-comments text-green-600 text-xl"></i>
+                        <h3 class="font-bold text-lg text-green-600">Análise de Conversas</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-2"><span class="text-red-600 font-semibold">03</span> <span class="text-red-600 font-semibold">Conversas Suspeitas</span> foram detectadas no número analisado. O sistema recuperou <span class="text-amber-600 font-semibold">mensagens apagadas</span> e parte delas foi classificada como <span class="text-amber-600 font-semibold">críticas</span> — vale a pena conferir cada uma.</p>
+                    <p class="text-xs text-gray-500 mb-3">Toque em uma conversa abaixo para ver o conteúdo completo.</p>
+                    <div class="space-y-2">
+                        <div class="analise-conversa-item">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle fill='%239ca3af' cx='20' cy='20' r='20'/%3E%3C/svg%3E" alt="" class="w-12 h-12 rounded-full object-cover flex-shrink-0 relatorio-foto-conversa" data-esposo="./images/relatorio/esposo-1.png" data-esposa="./images/relatorio/esposa-1.jpg">
+                            <div class="min-w-0 flex-1 analise-conversa-conteudo">
+                                <p id="analise-tel-1" class="font-bold text-black text-sm">+55 67 9XXXX-0000</p>
+                                <p class="text-xs text-gray-600">Mensagem apagada recuperada</p>
+                            </div>
+                            <div class="flex items-center gap-2 flex-shrink-0 analise-conversa-meta">
+                                <i class="fas fa-exclamation-circle text-red-500"></i>
+                                <span class="text-xs text-gray-400">Ontem</span>
+                            </div>
+                        </div>
+                        <div class="analise-conversa-item">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle fill='%239ca3af' cx='20' cy='20' r='20'/%3E%3C/svg%3E" alt="" class="w-12 h-12 rounded-full object-cover flex-shrink-0 relatorio-foto-conversa" data-esposo="./images/relatorio/esposo-2.jpg" data-esposa="./images/relatorio/esposa-2.jpg">
+                            <div class="min-w-0 flex-1 analise-conversa-conteudo">
+                                <p id="analise-tel-2" class="font-bold text-black text-sm">+55 67 9XXXX-0000</p>
+                                <p class="text-xs text-gray-600">Áudio suspeito detectado</p>
+                            </div>
+                            <div class="flex items-center gap-2 flex-shrink-0 analise-conversa-meta">
+                                <i class="fas fa-exclamation-circle text-red-500"></i>
+                                <span class="text-xs text-gray-400">3 dias</span>
+                            </div>
+                        </div>
+                        <div class="analise-conversa-item">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle fill='%239ca3af' cx='20' cy='20' r='20'/%3E%3C/svg%3E" alt="" class="w-12 h-12 rounded-full object-cover flex-shrink-0 relatorio-foto-conversa" data-esposo="./images/relatorio/esposo-3.jpg" data-esposa="./images/relatorio/esposa-3.jpg">
+                            <div class="min-w-0 flex-1 analise-conversa-conteudo">
+                                <p id="analise-tel-3" class="font-bold text-black text-sm">+55 67 9XXXX-0000</p>
+                                <p class="text-xs text-gray-600">Fotos suspeitas encontradas</p>
+                            </div>
+                            <div class="flex items-center gap-2 flex-shrink-0 analise-conversa-meta">
+                                <i class="fas fa-exclamation-circle text-red-500"></i>
+                                <span class="text-xs text-gray-400">1 semana</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mídia Recuperada -->
+                <div class="bg-white rounded-xl shadow-lg text-gray-800 p-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-photo-video text-green-600 text-xl"></i>
+                        <h3 class="font-bold text-lg text-green-600">Mídia Recuperada</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-3"><span class="text-red-600 font-semibold">03</span> áudios comprometedores foram apagados pelo alvo durante a análise. O sistema ainda localizou <span class="text-red-600 font-semibold">31</span> fotos apagadas que podem conter conteúdo sensível. Desbloqueie para acessar tudo.</p>
+                    <button type="button" class="btn-page btn-secondary w-full mb-3 btn-cta-checkout">
+                        <i class="fas fa-play text-sm"></i> Ouvir áudios recuperados
+                    </button>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-4 mb-4 px-0.5">
+                        <div class="aspect-square bg-gray-800 rounded-xl flex flex-col items-center justify-center relatorio-midia-item relatorio-midia-bg" data-esposo="./images/relatorio/esposo-4.jpg" data-esposa="./images/relatorio/esposa-4.jpg"><div class="relatorio-midia-bg-layer"></div><span class="relatorio-midia-overlay"><i class="fas fa-lock text-white text-xl sm:text-3xl mb-1 sm:mb-1.5"></i><span class="text-white text-xs sm:text-sm font-medium tracking-wide">Bloqueado</span></span></div>
+                        <div class="aspect-square bg-gray-800 rounded-xl flex flex-col items-center justify-center relatorio-midia-item relatorio-midia-bg" data-esposo="./images/relatorio/esposo-5.jpg" data-esposa="./images/relatorio/esposa-5.jpg"><div class="relatorio-midia-bg-layer"></div><span class="relatorio-midia-overlay"><i class="fas fa-lock text-white text-xl sm:text-3xl mb-1 sm:mb-1.5"></i><span class="text-white text-xs sm:text-sm font-medium tracking-wide">Bloqueado</span></span></div>
+                        <div class="aspect-square bg-gray-800 rounded-xl flex flex-col items-center justify-center relatorio-midia-item relatorio-midia-bg" data-esposo="./images/relatorio/esposo-6.jpg" data-esposa="./images/relatorio/esposa-6.jpg"><div class="relatorio-midia-bg-layer"></div><span class="relatorio-midia-overlay"><i class="fas fa-lock text-white text-xl sm:text-3xl mb-1 sm:mb-1.5"></i><span class="text-white text-xs sm:text-sm font-medium tracking-wide">Bloqueado</span></span></div>
+                        <div class="aspect-square bg-gray-800 rounded-xl flex flex-col items-center justify-center relatorio-midia-item relatorio-midia-bg" data-esposo="./images/relatorio/esposo-7.jpg" data-esposa="./images/relatorio/esposa-7.jpg"><div class="relatorio-midia-bg-layer"></div><span class="relatorio-midia-overlay"><i class="fas fa-lock text-white text-xl sm:text-3xl mb-1 sm:mb-1.5"></i><span class="text-white text-xs sm:text-sm font-medium tracking-wide">Bloqueado</span></span></div>
+                        <div class="aspect-square bg-gray-800 rounded-xl flex flex-col items-center justify-center relatorio-midia-item relatorio-midia-bg" data-esposo="./images/relatorio/esposo-8.jpg" data-esposa="./images/relatorio/esposa-8.jpg"><div class="relatorio-midia-bg-layer"></div><span class="relatorio-midia-overlay"><i class="fas fa-lock text-white text-xl sm:text-3xl mb-1 sm:mb-1.5"></i><span class="text-white text-xs sm:text-sm font-medium tracking-wide">Bloqueado</span></span></div>
+                        <div class="aspect-square bg-gray-800 rounded-xl flex flex-col items-center justify-center relatorio-midia-item relatorio-midia-bg relatorio-midia-perfil" data-esposo="./images/relatorio/esposo-9.jpg" data-esposa="./images/relatorio/esposa-9.jpg"><div class="relatorio-midia-bg-layer"></div><span class="relatorio-midia-overlay"><i class="fas fa-lock text-white text-xl sm:text-3xl mb-1 sm:mb-1.5"></i><span class="text-white text-xs sm:text-sm font-medium tracking-wide">Bloqueado</span></span></div>
+                    </div>
+                    <button type="button" class="btn-page btn-primary w-full btn-cta-checkout">
+                        <i class="fas fa-images text-sm"></i> Ver todas as fotos
+                    </button>
+                </div>
+
+                <!-- Palavras-chave Suspeitas -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden text-gray-800 p-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-search text-green-600 text-xl"></i>
+                        <h3 class="font-bold text-lg text-green-600">Palavras-chave Suspeitas</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-3">O sistema escaneou <span class="text-red-600 font-semibold">4.327 mensagens</span> e identificou palavras-chave que indicam possível traição ou comportamento escondido. Confira abaixo as que mais se repetem.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center justify-between"><span class="text-gray-800">"Gostoso"</span><span class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">13</span></div>
+                        <div class="flex items-center justify-between"><span class="text-gray-800">"Amor"</span><span class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">09</span></div>
+                        <div class="flex items-center justify-between"><span class="text-gray-800">"Segredo"</span><span class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">08</span></div>
+                        <div class="flex items-center justify-between"><span class="text-gray-800">"Escondido"</span><span class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">06</span></div>
+                        <div class="flex items-center justify-between"><span class="text-gray-800">"Não conta"</span><span class="bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">05</span></div>
+                    </div>
+                    <button type="button" class="btn-page btn-secondary w-full btn-cta-checkout">
+                        <i class="fas fa-comment-dots text-sm"></i> Ver todas as mensagens
+                    </button>
+                </div>
+
+                <!-- Localização Suspeita -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden text-gray-800 p-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-map-marker-alt text-green-600 text-xl"></i>
+                        <h3 class="font-bold text-lg text-green-600">Localização Suspeita</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-3">O número <strong id="relatorio-numero-local">5567855554444</strong> foi rastreado em <strong>possíveis motéis e locais suspeitos</strong> na região de <strong id="relatorio-cidade-local">Campo Grande</strong>. Veja no mapa e desbloqueie o histórico completo para conferir todos os pontos.</p>
+                    <div class="rounded-lg overflow-hidden bg-gray-200 mb-2" style="height: 200px;">
+                        <iframe id="relatorio-mapa" title="Mapa" src="https://www.openstreetmap.org/export/embed.html?bbox=-54.6%2C-20.5%2C-54.5%2C-20.4&layer=mapnik&marker=-20.45,-54.55" class="w-full h-full border-0" loading="lazy"></iframe>
+                    </div>
+                    <p id="relatorio-mapa-moteis-hoteis" class="text-sm text-red-600 font-semibold mb-2 hidden"></p>
+                    <a id="relatorio-mapa-ampliar" href="https://www.openstreetmap.org/?mlat=-20.45&amp;mlon=-54.55#map=14/-20.45/-54.55" target="_blank" rel="noopener" class="text-sm text-blue-600 mb-3 inline-block">Ver mapa ampliado</a>
+                    <button type="button" class="btn-page btn-secondary w-full mt-2 btn-cta-checkout">
+                        <i class="fas fa-history text-sm"></i> Ver histórico completo
+                    </button>
+                </div>
+
+                <!-- Avaliações recentes (provas sociais - swipe) -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden text-gray-800 p-4 mt-6">
+                    <h3 class="social-proof-title">Avaliações recentes</h3>
+                    <div class="social-proof-track" id="social-proof-track" role="region" aria-label="Avaliações - arraste para o lado">
+                        <div class="social-proof-card">
+                            <div class="avatar"><img data-src="./images/avaliacoes/carlos-perfil.jpg" src="./images/avaliacoes/carlos-perfil.jpg" alt="Carla" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">CP</span></div>
+                            <div class="nome">Carla Pereira</div>
+                            <div class="estrelas">★★★★★</div>
+                            <p class="texto">Achei vídeo dele no carro com outra. Fim de novela.</p>
+                            <div class="tempo">há 55 min</div>
+                        </div>
+                        <div class="social-proof-card">
+                            <div class="avatar"><img data-src="./images/avaliacoes/marina-perfil.jpg" src="./images/avaliacoes/marina-perfil.jpg" alt="Marina" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">MR</span></div>
+                            <div class="nome">Marina R.</div>
+                            <div class="estrelas">★★★★★</div>
+                            <p class="texto">Descobri tudo que precisava. O relatório veio completo e em minutos.</p>
+                            <div class="tempo">há 2 h</div>
+                        </div>
+                        <div class="social-proof-card">
+                            <div class="avatar"><img data-src="./images/avaliacoes/joao-perfil.jpg" src="./images/avaliacoes/joao-perfil.jpg" alt="João" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">JL</span></div>
+                            <div class="nome">João L.</div>
+                            <div class="estrelas">★★★★★</div>
+                            <p class="texto">As conversas que apareceram eram exatamente o que eu suspeitava. Recomendo.</p>
+                            <div class="tempo">ontem</div>
+                        </div>
+                        <div class="social-proof-card">
+                            <div class="avatar"><img data-src="./images/avaliacoes/ana-perfil.jpg" src="./images/avaliacoes/ana-perfil.jpg" alt="Ana" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">AS</span></div>
+                            <div class="nome">Ana S.</div>
+                            <div class="estrelas">★★★★★</div>
+                            <p class="texto">Pagamento seguro e resultado rápido. Fiquei tranquila com o sigilo.</p>
+                            <div class="tempo">há 1 dia</div>
+                        </div>
+                        <div class="social-proof-card">
+                            <div class="avatar"><img data-src="./images/avaliacoes/pedro-perfil.webp" src="./images/avaliacoes/pedro-perfil.webp" alt="Pedro" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">PS</span></div>
+                            <div class="nome">Pedro S.</div>
+                            <div class="estrelas">★★★★★</div>
+                            <p class="texto">Rápido e discreto. Em 10 min já tava com tudo que precisava, ninguém nem desconfiou.</p>
+                            <div class="tempo">há 3 h</div>
+                        </div>
+                        <div class="social-proof-card">
+                            <div class="avatar"><img data-src="./images/avaliacoes/ricardo-perfil.jpg" src="./images/avaliacoes/ricardo-perfil.jpg" alt="Ricardo" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">RM</span></div>
+                            <div class="nome">Ricardo M.</div>
+                            <div class="estrelas">★★★★★</div>
+                            <p class="texto">Cara, valeu cada centavo. Descobri a parada toda em menos de 1 hora, ficou tudo na minha mão.</p>
+                            <div class="tempo">há 6 h</div>
+                        </div>
+                        <div class="social-proof-card">
+                            <div class="avatar"><img data-src="./images/avaliacoes/juliana-perfil.jpg" src="./images/avaliacoes/juliana-perfil.jpg" alt="Juliana" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');"><span class="avatar-fallback" style="display:none;">JF</span></div>
+                            <div class="nome">Juliana F.</div>
+                            <div class="estrelas">★★★★★</div>
+                            <p class="texto">Nossa, que alívio. Tava na dúvida e em 1 dia já tinha a resposta. Super fácil e ninguém fica sabendo.</p>
+                            <div class="tempo">ontem</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dúvidas Frequentes + Garantia -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden text-gray-800 p-4 mt-6 faq-section">
+                    <h3 class="faq-title">Dúvidas Frequentes</h3>
+                    <div class="faq-item">
+                        <button type="button" class="faq-pergunta" aria-expanded="false">Como vou receber o acesso?<i class="fas fa-plus"></i></button>
+                        <div class="faq-resposta">Assim que o pagamento for confirmado via PIX, você recebe o acesso completo por e-mail em poucos minutos. O link é exclusivo e seguro — pode acessar de qualquer dispositivo.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-pergunta" aria-expanded="false">É seguro e confiável?<i class="fas fa-plus"></i></button>
+                        <div class="faq-resposta">Sim. Utilizamos gateway de pagamento certificado e não armazenamos dados sensíveis. Seu acesso é 100% sigiloso e o pagamento é processado em ambiente seguro.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-pergunta" aria-expanded="false">A ferramenta realmente funciona?<i class="fas fa-plus"></i></button>
+                        <div class="faq-resposta">Sim. Milhares de pessoas já utilizaram nossa análise. O sistema processa os dados em tempo real e o relatório que você vê é gerado com base nas informações do número consultado. A precisão depende dos dados disponíveis na rede.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-pergunta" aria-expanded="false">Qualquer pessoa pode adquirir essa ferramenta?<i class="fas fa-plus"></i></button>
+                        <div class="faq-resposta">O serviço é destinado a maiores de 18 anos que desejam verificar informações de interesse pessoal, dentro da lei. Recomendamos uso responsável e ético.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-pergunta" aria-expanded="false">Como funciona o suporte?<i class="fas fa-plus"></i></button>
+                        <div class="faq-resposta">Nosso suporte responde por e-mail e WhatsApp em até 24 horas úteis. Se tiver qualquer dúvida após a compra, basta entrar em contato com o mesmo e-mail ou número usado no pedido.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-pergunta" aria-expanded="false">Tenho dúvidas antes de comprar, como entro em contato?<i class="fas fa-plus"></i></button>
+                        <div class="faq-resposta">Você pode enviar sua dúvida pelo WhatsApp ou e-mail disponíveis no site. Respondemos o mais rápido possível para você decidir com tranquilidade.</div>
+                    </div>
+                    <img data-src="./images/garantia-90dias.png" src="./images/garantia-90dias.png" alt="90 Dias de Garantia" class="garantia-badge" onerror="this.style.display='none'">
+                    <p class="text-center text-sm text-gray-500 mb-2">90 dias de garantia. Se não ficar satisfeito, devolvemos seu investimento.</p>
+                    <p class="text-center text-xs text-gray-400">
+                        <a href="../politica-de-privacidade/index.html" class="text-green-600 hover:underline">Política de Privacidade</a>
+                        <span class="mx-1">·</span>
+                        <a href="../termos-de-uso/index.html" class="text-green-600 hover:underline">Termos de Uso</a>
+                    </p>
+                </div>
+            </div>
+            </div>
+
+            <div class="mt-6 space-y-4">
+
+                <div class="flex items-center justify-between p-4 border rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-circle-notch fa-spin text-blue-500 text-xl" id="msg-loader"></i>
+                        <i class="fas fa-comment-dots text-white text-xl"></i>
+                        <div>
+                            <p class="font-bold text-sm">Mensagens suspeitas</p>
+                            <p class="text-xs text-white-600">*Mensagens contendo algum contexto sexual.</p>
+                        </div>
+                    </div>
+                    <span id="msg-count" class="text-sm font-bold text-black hidden"></span>
+                </div>
+
+
+                <div class="flex items-center justify-between p-4 border rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-circle-notch fa-spin text-blue-500 text-xl" id="img-loader"></i>
+                        <i class="fas fa-image text-white text-xl"></i>
+                        <div>
+                            <p class="font-bold text-sm">Imagens suspeitas</p>
+                            <p class="text-xs text-white-600">*Imagens identificadas com conteúdos de nudes.</p>
+                        </div>
+                    </div>
+                    <span id="img-count" class="text-sm font-bold text-black hidden"></span>
+                </div>
+
+
+                <div class="flex items-center justify-between p-4 border rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-circle-notch fa-spin text-blue-500 text-xl" id="loc-loader"></i>
+                        <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                        <div>
+                            <p class="font-bold text-sm">Localizações suspeitas</p>
+                            <p class="text-xs text-white-600">*Localizações como motel, casa de massagem e pontos de
+                                prostituição.</p>
+                        </div>
+                    </div>
+                    <span id="loc-count" class="text-sm font-bold text-black hidden"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <section class="mt-10 px-4 lg:px-8 max-w-5xl mx-auto">
+        <div class="bg-gray-900 text-white p-5 rounded-lg shadow-md border border-gray-700">
+            <h2 class="text-2xl font-bold text-center mb-4">Como funciona</h2>
+
+            <div id="step-1" class="mt-4 step">
+                <p class="step-title font-bold text-white">
+                    <span class="step-number">01</span> Digite o Número
+                </p>
+                <p class="step-description text-sm text-gray-300">Digite o número do Celular que deseja Espionar.</p>
+            </div>
+
+            <div id="step-2" class="mt-4 step">
+                <p class="step-title font-bold text-white">
+                    <span class="step-number">02</span> Espionagem em Andamento (4 a 5 min)
+                </p>
+                <p class="step-description text-sm text-gray-300">O Espião começará a Funcionar Localizando e Detectando Tudo Suspeito que encontrar</p>
+            </div>
+
+            <div id="step-3" class="mt-4 step">
+                <p class="step-title font-bold text-white">
+                    <span class="step-number">03</span> Acesse o Celular Espionado
+                </p>
+                <p class="step-description text-sm text-gray-300">Você poderá Facilmente Acessar o Celular e Espionar Tudo que Deseja.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="text-center mt-10 mb-6 text-sm text-white">
+        <p>Ferramenta Atualizada:</p>
+        <p><span id="data-atual" class="font-bold text-white"></span></p>
+
+        <p class="mt-2 text-xs text-white">
+            © <span id="ano-atual"></span> Espião Detective. Todos os direitos reservados.
+        </p>
+    </footer>
+
+
+    <script>
+        const progressBar = document.getElementById('progress-bar');
+        const msgLoader = document.getElementById('msg-loader');
+        const imgLoader = document.getElementById('img-loader');
+        const locLoader = document.getElementById('loc-loader');
+
+        const msgCount = Math.floor(Math.random() * (59 - 30 + 1)) + 30;
+        const imgCount = Math.floor(Math.random() * (23 - 10 + 1)) + 10;
+        const locCount = 2;
+
+        let progress = 0;
+        let redirectPath = '';
+        var devMode = typeof window !== 'undefined' && (new URLSearchParams(window.location.search).get('dev') === '1');
+
+        if (devMode) {
+            document.body.classList.add('dev-mode');
+        }
+
+        function formatarTelefoneExibicao(raw) {
+            const digits = String(raw || '').replace(/\D/g, '');
+            if (digits.length < 10) return '(00) 0 0000-0000';
+            const ddd = digits.slice(-11, -9);
+            const resto = digits.slice(-9);
+            return '(' + ddd + ') ' + resto.charAt(0) + ' ' + resto.slice(1, 5) + '-' + resto.slice(5);
+        }
+
+        var cidadeGeolocalizacaoCache = null;
+        var lastCoords = { lat: null, lon: null };
+
+        function formatarCidade(endereco) {
+            var cidade = (endereco.city || endereco.municipality || endereco.town || endereco.village || endereco.county || '').trim();
+            var estado = (endereco.state || endereco.region || '').trim();
+            if (estado && estado.length > 2) estado = estado.replace(/\s*\/\s*.*$/, '').trim();
+            if (cidade && estado) return cidade + '/' + estado;
+            if (cidade) return cidade;
+            return null;
+        }
+
+        function reverseGeocode(lat, lon) {
+            return fetch('https://nominatim.openstreetmap.org/reverse?lat=' + lat + '&lon=' + lon + '&format=json&accept-language=pt', {
+                headers: { 'Accept': 'application/json', 'User-Agent': 'EspiaoConsulta/1.0' }
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var addr = data.address || {};
+                return formatarCidade(addr);
+            })
+            .catch(function() { return null; });
+        }
+
+        function buscarCidadePorGeolocalizacao() {
+            return new Promise(function(resolve) {
+                if (!navigator.geolocation) {
+                    resolve(null);
+                    return;
+                }
+                navigator.geolocation.getCurrentPosition(
+                    function(pos) {
+                        var lat = pos.coords.latitude;
+                        var lon = pos.coords.longitude;
+                        lastCoords.lat = lat;
+                        lastCoords.lon = lon;
+                        reverseGeocode(lat, lon).then(function(cidade) {
+                            if (cidade) cidadeGeolocalizacaoCache = cidade;
+                            resolve(cidade);
+                        });
+                    },
+                    function() { resolve(null); },
+                    { enableHighAccuracy: true, timeout: 15000, maximumAge: 600000 }
+                );
+            });
+        }
+
+        async function buscarCidadePorIP() {
+            try {
+                var res = await fetch('https://ipinfo.io/json');
+                var data = await res.json();
+                if (data.loc) {
+                    var parts = data.loc.split(',');
+                    if (parts.length >= 2) {
+                        lastCoords.lat = parseFloat(parts[0].trim());
+                        lastCoords.lon = parseFloat(parts[1].trim());
+                    }
+                }
+                var city = data.city || '';
+                var region = data.region || '';
+                if (city && region) return city + '/' + region;
+                if (city) return city;
+                return data.loc ? data.loc.split(',').map(function(s) { return s.trim(); })[0] : null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        async function obterCidadeUsuario() {
+            if (cidadeGeolocalizacaoCache) return cidadeGeolocalizacaoCache;
+            var cidade = await buscarCidadePorGeolocalizacao();
+            if (cidade) return cidade;
+            cidade = await buscarCidadePorIP();
+            return cidade || '—';
+        }
+
+        function iniciarGeolocalizacaoAntecipada() {
+            if (!navigator.geolocation) return;
+            navigator.geolocation.getCurrentPosition(
+                function(pos) {
+                    var lat = pos.coords.latitude;
+                    var lon = pos.coords.longitude;
+                    lastCoords.lat = lat;
+                    lastCoords.lon = lon;
+                    reverseGeocode(lat, lon).then(function(cidade) {
+                        if (cidade) cidadeGeolocalizacaoCache = cidade;
+                    });
+                },
+                function() {},
+                { enableHighAccuracy: true, timeout: 15000, maximumAge: 600000 }
+            );
+        }
+
+        function geocodeCidade(cidadeStr) {
+            if (!cidadeStr || cidadeStr === '—') return Promise.resolve(null);
+            var q = encodeURIComponent(cidadeStr.split('/')[0].trim() + ', Brasil');
+            return fetch('https://nominatim.openstreetmap.org/search?q=' + q + '&format=json&limit=1', {
+                headers: { 'Accept': 'application/json', 'User-Agent': 'EspiaoConsulta/1.0' }
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(arr) {
+                if (arr && arr[0]) return { lat: parseFloat(arr[0].lat), lon: parseFloat(arr[0].lon) };
+                return null;
+            })
+            .catch(function() { return null; });
+        }
+
+        function atualizarMapaLocalizacao(lat, lon, numMoteis, numHoteis) {
+            var iframe = document.getElementById('relatorio-mapa');
+            if (!iframe) return;
+            var delta = 0.025;
+            var bbox = [lon - delta, lat - delta, lon + delta, lat + delta].join('%2C');
+            var marker = lat + '%2C' + lon;
+            iframe.src = 'https://www.openstreetmap.org/export/embed.html?bbox=' + bbox + '&layer=mapnik&marker=' + marker;
+            var linkEl = document.getElementById('relatorio-mapa-ampliar');
+            if (linkEl) linkEl.href = 'https://www.openstreetmap.org/?mlat=' + lat + '&mlon=' + lon + '#map=14/' + lat + '/' + lon;
+            var elContagem = document.getElementById('relatorio-mapa-moteis-hoteis');
+            if (elContagem) {
+                elContagem.textContent = 'O alvo foi detectado atrav\u00e9s do IP do celular em 01 motel e 01 localiza\u00e7\u00e3o suspeita nos \u00faltimos 07 dias.';
+                elContagem.classList.remove('hidden');
+            }
+        }
+
+        function mostrarPerfilWhatsApp(phoneRaw, profilePic) {
+            const card = document.getElementById('perfil-whatsapp-card');
+            const avatar = document.getElementById('perfil-card-avatar');
+            const phoneEl = document.getElementById('perfil-card-phone');
+            const cidadeEl = document.getElementById('perfil-card-cidade');
+            const btn = document.getElementById('perfil-card-btn-relatorio');
+            if (!card) return;
+
+            phoneEl.textContent = formatarTelefoneExibicao(phoneRaw);
+            if (avatar) {
+                avatar.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234a5568' width='100' height='100'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%236b7280'/%3E%3Cellipse cx='50' cy='88' rx='30' ry='22' fill='%236b7280'/%3E%3C/svg%3E";
+                avatar.classList.add('perfil-card-avatar-blur');
+            }
+            btn.onclick = function() {
+                if (typeof window.openCheckout === 'function') window.openCheckout();
+            };
+
+            obterCidadeUsuario().then(function(cidade) {
+                cidadeEl.textContent = cidade;
+                var cidadeRelatorio = document.getElementById('relatorio-cidade-local');
+                if (cidadeRelatorio) cidadeRelatorio.textContent = cidade !== '—' ? cidade : 'Campo Grande';
+                var lat = lastCoords.lat;
+                var lon = lastCoords.lon;
+                if (lat == null || lon == null) {
+                    geocodeCidade(cidade).then(function(coords) {
+                        if (coords) { lat = coords.lat; lon = coords.lon; }
+                        if (lat != null && lon != null) {
+                            var moteis = 2 + Math.floor(Math.random() * 4);
+                            var hoteis = 3 + Math.floor(Math.random() * 5);
+                            atualizarMapaLocalizacao(lat, lon, moteis, hoteis);
+                        }
+                    });
+                } else {
+                    var moteis = 2 + Math.floor(Math.random() * 4);
+                    var hoteis = 3 + Math.floor(Math.random() * 5);
+                    atualizarMapaLocalizacao(lat, lon, moteis, hoteis);
+                }
+            });
+            var numRelatorio = document.getElementById('relatorio-numero-local');
+            if (numRelatorio) numRelatorio.textContent = (phoneRaw || '').replace(/\D/g, '').slice(-11) || '5567855554444';
+
+            card.classList.remove('hidden');
+        }
+
+        function quandoBarraCompleta() {
+            var perguntaEl = document.getElementById('pergunta-seguranca');
+            if (perguntaEl) perguntaEl.classList.remove('hidden');
+            var phoneRaw = (function() {
+                var urlParams = new URLSearchParams(window.location.search);
+                var tel = urlParams.get('tel');
+                if (tel) return decodeURIComponent(tel);
+                var ddd = localStorage.getItem('ddd');
+                var phone = localStorage.getItem('phoneNumber');
+                return (ddd || '') + (phone || '');
+            })();
+            var profilePic = sessionStorage.getItem('profilePic') || (document.getElementById('imgProfile') && document.getElementById('imgProfile').src) || './images/loading.gif';
+            document.getElementById('btn-esposo').onclick = function() {
+                sessionStorage.setItem('relatorioTipo', 'esposo');
+                if (perguntaEl) perguntaEl.classList.add('hidden');
+                document.getElementById('bloco-perfil-e-relatorio').classList.remove('hidden');
+                var btnFixo = document.getElementById('btn-acesso-total-fixo');
+                if (btnFixo) btnFixo.classList.remove('hidden');
+                aplicarFotosPorTipo('esposo');
+                preencherNumerosAnaliseConversas();
+                mostrarPerfilWhatsApp(phoneRaw, profilePic);
+            };
+            document.getElementById('btn-esposa').onclick = function() {
+                sessionStorage.setItem('relatorioTipo', 'esposa');
+                if (perguntaEl) perguntaEl.classList.add('hidden');
+                document.getElementById('bloco-perfil-e-relatorio').classList.remove('hidden');
+                var btnFixo = document.getElementById('btn-acesso-total-fixo');
+                if (btnFixo) btnFixo.classList.remove('hidden');
+                aplicarFotosPorTipo('esposa');
+                preencherNumerosAnaliseConversas();
+                mostrarPerfilWhatsApp(phoneRaw, profilePic);
+            };
+        }
+
+        (function initModalConversa() {
+            var backdrop = document.getElementById('modal-conversa-backdrop');
+            var fechar = document.getElementById('modal-conversa-fechar');
+            var numeroEl = document.getElementById('modal-conversa-numero');
+            var avatarEl = document.getElementById('modal-conversa-avatar');
+            var msgsEl = document.getElementById('modal-conversa-msgs');
+            var variantesConversaEsposo = [
+                [ { text: 'Cadeee não vai mandar?', lado: 'recebida', hora: '09:42' }, { text: 'vou sim amor, já já te mando a foto', lado: 'enviada', hora: '09:44', check: true }, { bloqueado: true, lado: 'recebida', hora: '09:50' }, { bloqueado: true, lado: 'enviada', hora: '09:51' } ],
+                [ { text: 'Oi, tudo bem?', lado: 'recebida', hora: '14:22' }, { text: 'Tudo sim e você?', lado: 'enviada', hora: '14:23', check: true }, { bloqueado: true, lado: 'recebida', hora: '14:25' }, { bloqueado: true, lado: 'enviada', hora: '14:25' } ],
+                [ { text: 'Eiii meu lindo', lado: 'recebida', hora: '13:10' }, { text: 'to aqui amor', lado: 'enviada', hora: '13:11', check: true }, { bloqueado: true, lado: 'recebida', hora: '13:15' }, { bloqueado: true, lado: 'enviada', hora: '13:16' } ],
+                [ { text: 'Manda uma foto hoje amor', lado: 'recebida', hora: '10:15' }, { text: 'vou mandar sim, hoje a noite', lado: 'enviada', hora: '10:17', check: true }, { bloqueado: true, lado: 'recebida', hora: '10:22' }, { bloqueado: true, lado: 'enviada', hora: '10:23' } ],
+                [ { text: 'Amor, cadê você?', lado: 'recebida', hora: '20:15' }, { text: 'Já to indo', lado: 'enviada', hora: '20:16', check: true }, { bloqueado: true, lado: 'recebida', hora: '20:22' }, { bloqueado: true, lado: 'enviada', hora: '20:23' } ],
+                [ { text: 'Oi sumido', lado: 'recebida', hora: '18:02' }, { text: 'tava ocupado amor', lado: 'enviada', hora: '18:05', check: true }, { bloqueado: true, lado: 'recebida', hora: '18:10' }, { bloqueado: true, lado: 'enviada', hora: '18:12' } ],
+                [ { text: 'Você é lindo demais', lado: 'recebida', hora: '12:05' }, { text: 'obrigado amor', lado: 'enviada', hora: '12:07', check: true }, { bloqueado: true, lado: 'recebida', hora: '12:10' }, { bloqueado: true, lado: 'enviada', hora: '12:11' } ],
+                [ { text: 'Hoje a noite ta livre?', lado: 'recebida', hora: '15:33' }, { text: 'claro, te espero', lado: 'enviada', hora: '15:35', check: true }, { bloqueado: true, lado: 'recebida', hora: '15:40' }, { bloqueado: true, lado: 'enviada', hora: '15:41' } ],
+                [ { text: 'Nao esquece hein', lado: 'recebida', hora: '11:20' }, { text: 'nunca esqueço de você', lado: 'enviada', hora: '11:22', check: true }, { bloqueado: true, lado: 'recebida', hora: '11:28' }, { bloqueado: true, lado: 'enviada', hora: '11:30' } ]
+            ];
+            var variantesConversaEsposa = [
+                [ { text: 'Cadeee não vai mandar?', lado: 'recebida', hora: '09:42' }, { text: 'vou sim amor, já já te mando a foto', lado: 'enviada', hora: '09:44', check: true }, { bloqueado: true, lado: 'recebida', hora: '09:50' }, { bloqueado: true, lado: 'enviada', hora: '09:51' } ],
+                [ { text: 'Oi, tudo bem?', lado: 'recebida', hora: '14:22' }, { text: 'Tudo sim e você?', lado: 'enviada', hora: '14:23', check: true }, { bloqueado: true, lado: 'recebida', hora: '14:25' }, { bloqueado: true, lado: 'enviada', hora: '14:25' } ],
+                [ { text: 'Eiii minha linda', lado: 'recebida', hora: '13:10' }, { text: 'to aqui amor', lado: 'enviada', hora: '13:11', check: true }, { bloqueado: true, lado: 'recebida', hora: '13:15' }, { bloqueado: true, lado: 'enviada', hora: '13:16' } ],
+                [ { text: 'Manda uma foto hoje amor', lado: 'recebida', hora: '10:15' }, { text: 'vou mandar sim, hoje a noite', lado: 'enviada', hora: '10:17', check: true }, { bloqueado: true, lado: 'recebida', hora: '10:22' }, { bloqueado: true, lado: 'enviada', hora: '10:23' } ],
+                [ { text: 'Amor, cadê você?', lado: 'recebida', hora: '20:15' }, { text: 'Já to indo', lado: 'enviada', hora: '20:16', check: true }, { bloqueado: true, lado: 'recebida', hora: '20:22' }, { bloqueado: true, lado: 'enviada', hora: '20:23' } ],
+                [ { text: 'Oi sumida', lado: 'recebida', hora: '18:02' }, { text: 'tava ocupada amor', lado: 'enviada', hora: '18:05', check: true }, { bloqueado: true, lado: 'recebida', hora: '18:10' }, { bloqueado: true, lado: 'enviada', hora: '18:12' } ],
+                [ { text: 'Você é linda demais', lado: 'recebida', hora: '12:05' }, { text: 'obrigada amor', lado: 'enviada', hora: '12:07', check: true }, { bloqueado: true, lado: 'recebida', hora: '12:10' }, { bloqueado: true, lado: 'enviada', hora: '12:11' } ],
+                [ { text: 'Hoje a noite ta livre?', lado: 'recebida', hora: '15:33' }, { text: 'claro, te espero', lado: 'enviada', hora: '15:35', check: true }, { bloqueado: true, lado: 'recebida', hora: '15:40' }, { bloqueado: true, lado: 'enviada', hora: '15:41' } ],
+                [ { text: 'Nao esquece hein', lado: 'recebida', hora: '11:20' }, { text: 'nunca esqueço de você', lado: 'enviada', hora: '11:22', check: true }, { bloqueado: true, lado: 'recebida', hora: '11:28' }, { bloqueado: true, lado: 'enviada', hora: '11:30' } ]
+            ];
+            function renderizarMsgs(variante) {
+                if (!msgsEl) return;
+                var html = '';
+                variante.forEach(function(m) {
+                    var lado = m.lado === 'enviada' ? 'enviada' : 'recebida';
+                    var bolhaClass = m.bloqueado ? 'msg-bolha bloqueado' : 'msg-bolha';
+                    var bolhaText = m.bloqueado ? '<i class="fas fa-lock" style="font-size: 0.7rem; margin-right: 4px;"></i> Conteúdo bloqueado<span class="msg-bloqueado-extra">Desbloqueie para ver esta mensagem</span>' : (m.text || '');
+                    var horaHtml = m.hora + (m.check ? ' <i class="fas fa-check-double text-blue-500" style="font-size: 0.65rem;"></i>' : '');
+                    html += '<div class="msg ' + lado + '"><div class="' + bolhaClass + '">' + bolhaText + '</div><div class="msg-hora">' + horaHtml + '</div></div>';
+                });
+                msgsEl.innerHTML = html;
+            }
+            function abrirModal(telefone, avatarSrc) {
+                if (numeroEl) numeroEl.textContent = telefone || '+55 67 9XXXX-XXXX';
+                if (avatarEl && avatarSrc) avatarEl.src = avatarSrc;
+                avatarEl.classList.add('perfil-card-avatar-blur');
+                var tipo = (sessionStorage.getItem('relatorioTipo') || 'esposo').toLowerCase();
+                var lista = tipo === 'esposa' ? variantesConversaEsposa : variantesConversaEsposo;
+                var idx = Math.floor(Math.random() * lista.length);
+                renderizarMsgs(lista[idx]);
+                backdrop.classList.add('ativo');
+                backdrop.setAttribute('aria-hidden', 'false');
+            }
+            function fecharModal() {
+                backdrop.classList.remove('ativo');
+                backdrop.setAttribute('aria-hidden', 'true');
+            }
+            document.querySelectorAll('.analise-conversa-item').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    var telEl = item.querySelector('[id^="analise-tel-"]');
+                    var imgEl = item.querySelector('.relatorio-foto-conversa');
+                    abrirModal(telEl ? telEl.textContent.trim() : '', imgEl ? imgEl.src : '');
+                });
+            });
+            if (fechar) fechar.addEventListener('click', fecharModal);
+            backdrop.addEventListener('click', function(e) { if (e.target === backdrop) fecharModal(); });
+        })();
+
+        (function initCheckout() {
+            var backdrop = document.getElementById('checkout-modal-backdrop');
+            var fecharBtn = document.getElementById('checkout-fechar');
+            var form = document.getElementById('checkout-form');
+            var stepForm = document.getElementById('checkout-step-form');
+            var stepPix = document.getElementById('checkout-step-pix');
+            var stepObrigado = document.getElementById('checkout-step-obrigado');
+            var stepObrigado2 = document.getElementById('checkout-step-obrigado-2');
+            var erroEl = document.getElementById('checkout-erro');
+            var lastLeadData = {};
+            var qrcodeImg = document.getElementById('checkout-qrcode');
+            var codigoPix = document.getElementById('checkout-codigo-pix');
+            var btnCopiar = document.getElementById('checkout-btn-copiar');
+            var aguardandoEl = document.getElementById('checkout-aguardando');
+            var sucessoEl = document.getElementById('checkout-sucesso');
+            var btnGerar = document.getElementById('btn-gerar-pix');
+            var btnGerarList = document.querySelectorAll('.btn-gerar-pix');
+            var pollInterval = null;
+            var lastPurchaseAmount = 0;
+            var purchaseEventFiredForTransaction = false;
+
+            function showErro(msg) {
+                if (erroEl) { erroEl.textContent = msg || ''; erroEl.style.display = msg ? 'block' : 'none'; }
+            }
+            function openCheckout() {
+                if (!backdrop) return;
+                var convBackdrop = document.getElementById('modal-conversa-backdrop');
+                if (convBackdrop) convBackdrop.classList.remove('ativo');
+                showErro('');
+                stepForm.classList.add('ativo');
+                stepPix.classList.remove('ativo');
+                if (stepObrigado) stepObrigado.classList.remove('ativo');
+                if (stepObrigado2) stepObrigado2.classList.remove('ativo');
+                var modalEl = document.getElementById('checkout-modal');
+                if (modalEl) modalEl.classList.remove('checkout-obrigado-visible');
+                sucessoEl.style.display = 'none';
+                aguardandoEl.style.display = 'block';
+                var d = new Date();
+                var dd = ('0' + d.getDate()).slice(-2);
+                var mm = ('0' + (d.getMonth() + 1)).slice(-2);
+                var faixaTexto = document.getElementById('checkout-faixa-texto');
+                if (faixaTexto) faixaTexto.textContent = 'Essa oferta vai até ' + dd + '/' + mm + ' às 00:00hrs. Depois volta ao preço normal de R$ 497.';
+                var phoneEl = document.getElementById('perfil-card-phone');
+                if (phoneEl && phoneEl.textContent && phoneEl.textContent.replace(/\D/g, '').length >= 10) {
+                    var tel = phoneEl.textContent.replace(/\D/g, '');
+                    document.getElementById('checkout-telefone').value = tel.length >= 11 ? '(' + tel.slice(0,2) + ') ' + tel.slice(2,7) + '-' + tel.slice(7) : tel;
+                }
+                backdrop.classList.add('ativo');
+                backdrop.setAttribute('aria-hidden', 'false');
+                if (typeof aplicarUrlsImagensCheckoutEAvaliacoes === 'function') aplicarUrlsImagensCheckoutEAvaliacoes();
+                try {
+                    if (typeof fbq === 'function' && !sessionStorage.getItem('fb_pixel_initiate_checkout')) {
+                        fbq('track', 'InitiateCheckout');
+                        sessionStorage.setItem('fb_pixel_initiate_checkout', '1');
+                    }
+                } catch (e) {}
+            }
+            function closeCheckout() {
+                if (backdrop) { backdrop.classList.remove('ativo'); backdrop.setAttribute('aria-hidden', 'true'); }
+                if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+                var modalEl = document.getElementById('checkout-modal');
+                if (modalEl) modalEl.classList.remove('checkout-obrigado-visible');
+            }
+            function maskCpf(v) {
+                var d = v.replace(/\D/g, '').slice(0, 11);
+                if (d.length <= 6) return d.replace(/(\d{3})(\d{0,3})/, '$1.$2');
+                if (d.length <= 9) return d.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
+                return d.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
+            }
+            function maskPhone(v) {
+                var d = v.replace(/\D/g, '').slice(0, 11);
+                if (d.length <= 2) return d.length ? '(' + d : '';
+                if (d.length <= 7) return '(' + d.slice(0,2) + ') ' + d.slice(2);
+                return '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7);
+            }
+            var cpfInput = document.getElementById('checkout-cpf');
+            var telInput = document.getElementById('checkout-telefone');
+            if (cpfInput) cpfInput.addEventListener('input', function() { this.value = maskCpf(this.value); });
+            if (telInput) telInput.addEventListener('input', function() { this.value = maskPhone(this.value); });
+
+            var ob1 = document.getElementById('ob-antirastreio');
+            var ob2 = document.getElementById('ob-whatsapp');
+            var headerTitulo = document.querySelector('#checkout-modal .checkout-header h3');
+            function atualizarTotalCheckout() {
+                var total = 4990;
+                if (ob1 && ob1.checked) total += 990;
+                if (ob2 && ob2.checked) total += 1490;
+                if (headerTitulo) headerTitulo.textContent = 'Pagamento PIX · R$ ' + (total/100).toFixed(2).replace('.', ',');
+                return total;
+            }
+            if (ob1) ob1.addEventListener('change', atualizarTotalCheckout);
+            if (ob2) ob2.addEventListener('change', atualizarTotalCheckout);
+
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showErro('');
+                    var name = document.getElementById('checkout-nome').value.trim();
+                    var email = document.getElementById('checkout-email').value.trim();
+                    var phone = document.getElementById('checkout-telefone').value.replace(/\D/g, '');
+                    var cpf = document.getElementById('checkout-cpf').value.replace(/\D/g, '');
+                    if (!name || !email || phone.length < 10 || cpf.length !== 11) {
+                        showErro('Preencha todos os campos corretamente. CPF com 11 dígitos.');
+                        return;
+                    }
+                    var amount = atualizarTotalCheckout();
+                    lastPurchaseAmount = amount;
+                    var phoneFormatted = document.getElementById('checkout-telefone').value.trim();
+                    var cpfFormatted = document.getElementById('checkout-cpf').value.trim();
+                    lastLeadData = { name: name, email: email, phone: phone, phoneFormatted: phoneFormatted, cpf: cpf, cpfFormatted: cpfFormatted };
+                    btnGerarList.forEach(function(b){ b.disabled = true; });
+                    fetch('/api/criar-venda', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name: name, email: email, phone: phone, cpf: cpf, amount: amount, itemTitle: 'Acesso Total - Relatório Completo' })
+                    }).then(function(r) { return r.json(); }).then(function(data) {
+                        btnGerarList.forEach(function(b){ b.disabled = false; });
+                        if (!data.success) {
+                            showErro(data.message || 'Erro ao gerar PIX.');
+                            return;
+                        }
+                        var t = data.data;
+                        if (t.qrCodeBase64) {
+                            qrcodeImg.src = 'data:image/png;base64,' + t.qrCodeBase64;
+                            qrcodeImg.style.display = 'block';
+                        }
+                        codigoPix.value = t.copyPaste || '';
+                        stepForm.classList.remove('ativo');
+                        stepPix.classList.add('ativo');
+                        aguardandoEl.style.display = 'block';
+                        sucessoEl.style.display = 'none';
+                        purchaseEventFiredForTransaction = false;
+                        if (pollInterval) clearInterval(pollInterval);
+                        pollInterval = setInterval(function() {
+                            fetch('/api/status-venda?transactionId=' + encodeURIComponent(t.transactionId))
+                                .then(function(r) { return r.json(); })
+                                .then(function(s) {
+                                    if (s.success && s.data && s.data.status === 'PAID') {
+                                        if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+                                        aguardandoEl.style.display = 'none';
+                                        sucessoEl.style.display = 'block';
+                                        if (typeof fbq === 'function' && !purchaseEventFiredForTransaction) {
+                                            purchaseEventFiredForTransaction = true;
+                                            fbq('track', 'Purchase', { value: lastPurchaseAmount / 100, currency: 'BRL' });
+                                        }
+                                        stepPix.classList.remove('ativo');
+                                        if (stepObrigado) {
+                                            var onome = document.getElementById('obrigado-nome');
+                                            var ocpf = document.getElementById('obrigado-cpf');
+                                            var owhatsapp = document.getElementById('obrigado-whatsapp');
+                                            if (onome) onome.textContent = lastLeadData.name || '—';
+                                            if (ocpf) ocpf.textContent = lastLeadData.cpfFormatted || lastLeadData.cpf || '—';
+                                            if (owhatsapp) owhatsapp.textContent = lastLeadData.phoneFormatted || lastLeadData.phone || '—';
+                                            stepObrigado.classList.add('ativo');
+                                            var modalEl = document.getElementById('checkout-modal');
+                                            if (modalEl) modalEl.classList.add('checkout-obrigado-visible');
+                                        }
+                                    }
+                                });
+                        }, 3000);
+                    }).catch(function() {
+                        btnGerarList.forEach(function(b){ b.disabled = false; });
+                        showErro('Erro de conexão. Tente novamente.');
+                    });
+                });
+            }
+            if (btnCopiar && codigoPix) {
+                btnCopiar.addEventListener('click', function() {
+                    codigoPix.select();
+                    document.execCommand('copy');
+                    btnCopiar.textContent = 'Copiado!';
+                    setTimeout(function() { btnCopiar.textContent = 'Copiar código PIX'; }, 2000);
+                });
+            }
+            if (fecharBtn) fecharBtn.addEventListener('click', closeCheckout);
+            if (backdrop) backdrop.addEventListener('click', function(ev) { if (ev.target === backdrop) closeCheckout(); });
+
+            window.openCheckout = openCheckout;
+            function showObrigadoPreview() {
+                if (!backdrop || !stepObrigado) return;
+                lastLeadData = { name: 'Nome de exemplo', cpfFormatted: '000.000.000-00', phoneFormatted: '(67) 9 9999-9999' };
+                var onome = document.getElementById('obrigado-nome');
+                var ocpf = document.getElementById('obrigado-cpf');
+                var owhatsapp = document.getElementById('obrigado-whatsapp');
+                if (onome) onome.textContent = lastLeadData.name;
+                if (ocpf) ocpf.textContent = lastLeadData.cpfFormatted;
+                if (owhatsapp) owhatsapp.textContent = lastLeadData.phoneFormatted;
+                stepForm.classList.remove('ativo');
+                stepPix.classList.remove('ativo');
+                if (stepObrigado2) stepObrigado2.classList.remove('ativo');
+                stepObrigado.classList.add('ativo');
+                var modalEl = document.getElementById('checkout-modal');
+                if (modalEl) modalEl.classList.add('checkout-obrigado-visible');
+                backdrop.classList.add('ativo');
+                backdrop.setAttribute('aria-hidden', 'false');
+            }
+            window.showObrigadoPreview = showObrigadoPreview;
+            var btnProteger = document.getElementById('btn-upsell1-proteger');
+            var btnRecusarUpsell = document.getElementById('btn-upsell1-recusar');
+            if (btnProteger) btnProteger.addEventListener('click', function() {
+                var u1Backdrop = document.getElementById('upsell1-modal-backdrop');
+                var hasData = lastLeadData && lastLeadData.name && lastLeadData.email && (lastLeadData.phone || lastLeadData.phoneFormatted) && (lastLeadData.cpf || lastLeadData.cpfFormatted);
+                if (hasData && typeof window.gerarPixUpsell1 === 'function') {
+                    window.gerarPixUpsell1(lastLeadData);
+                } else {
+                    var u1Nome = document.getElementById('upsell1-nome');
+                    var u1Email = document.getElementById('upsell1-email');
+                    var u1Tel = document.getElementById('upsell1-telefone');
+                    var u1Cpf = document.getElementById('upsell1-cpf');
+                    if (u1Nome && lastLeadData.name) u1Nome.value = lastLeadData.name;
+                    if (u1Email && lastLeadData.email) u1Email.value = lastLeadData.email;
+                    if (u1Tel && lastLeadData.phoneFormatted) u1Tel.value = lastLeadData.phoneFormatted || '';
+                    if (u1Cpf && (lastLeadData.cpfFormatted || lastLeadData.cpf)) u1Cpf.value = lastLeadData.cpfFormatted || lastLeadData.cpf || '';
+                    if (u1Backdrop) u1Backdrop.classList.add('ativo');
+                    document.getElementById('upsell1-form-wrap').style.display = 'block';
+                    document.getElementById('upsell1-pix-wrap').style.display = 'none';
+                    document.getElementById('upsell1-erro').style.display = 'none';
+                }
+            });
+            if (btnRecusarUpsell) btnRecusarUpsell.addEventListener('click', closeCheckout);
+            var btnFecharOb2 = document.getElementById('btn-fechar-obrigado-2');
+            if (btnFecharOb2) btnFecharOb2.addEventListener('click', closeCheckout);
+            var btnFecharOb = document.getElementById('obrigado-btn-fechar');
+            if (btnFecharOb) btnFecharOb.addEventListener('click', closeCheckout);
+            var btnFecharOb2Top = document.getElementById('obrigado2-btn-fechar');
+            if (btnFecharOb2Top) btnFecharOb2Top.addEventListener('click', closeCheckout);
+            var btnFixo = document.getElementById('btn-acesso-total-fixo');
+            if (btnFixo) btnFixo.addEventListener('click', openCheckout);
+            document.querySelectorAll('.btn-cta-checkout').forEach(function(b) { b.addEventListener('click', openCheckout); });
+            if (new URLSearchParams(window.location.search).get('obrigado') === '1') setTimeout(showObrigadoPreview, 500);
+        })();
+
+        (function initUpsell1Modal() {
+            var backdrop = document.getElementById('upsell1-modal-backdrop');
+            var form = document.getElementById('upsell1-form');
+            var formWrap = document.getElementById('upsell1-form-wrap');
+            var pixWrap = document.getElementById('upsell1-pix-wrap');
+            var erroEl = document.getElementById('upsell1-erro');
+            var qrcodeImg = document.getElementById('upsell1-qrcode');
+            var codigoPix = document.getElementById('upsell1-codigo-pix');
+            var aguardandoEl = document.getElementById('upsell1-aguardando');
+            var sucessoEl = document.getElementById('upsell1-sucesso');
+            var btnFechar = document.getElementById('upsell1-fechar');
+            var btnCopiar = document.getElementById('upsell1-btn-copiar');
+            var pollInterval = null;
+            function showErro(msg) { if (erroEl) { erroEl.textContent = msg || ''; erroEl.style.display = msg ? 'block' : 'none'; } }
+            function closeUpsell1() {
+                if (backdrop) backdrop.classList.remove('ativo');
+                if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+            }
+            function gerarPixComDados(leadData) {
+                var name = leadData.name || '';
+                var email = leadData.email || '';
+                var phone = (leadData.phone || '').replace(/\D/g, '');
+                var cpf = (leadData.cpf || leadData.cpfFormatted || '').replace(/\D/g, '');
+                if (!name || !email || phone.length < 10 || cpf.length !== 11) return false;
+                showErro('');
+                if (formWrap) formWrap.style.display = 'none';
+                if (pixWrap) pixWrap.style.display = 'block';
+                if (aguardandoEl) { aguardandoEl.style.display = 'block'; aguardandoEl.textContent = 'Gerando PIX...'; }
+                if (sucessoEl) sucessoEl.style.display = 'none';
+                if (qrcodeImg) qrcodeImg.style.display = 'none';
+                if (backdrop) backdrop.classList.add('ativo');
+                fetch('/api/criar-venda', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, email: email, phone: phone, cpf: cpf, amount: 2890, itemTitle: 'Proteção Celular' })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (aguardandoEl) aguardandoEl.textContent = 'Aguardando pagamento...';
+                    if (!data.success) { showErro(data.message || 'Erro ao gerar PIX.'); pixWrap.style.display = 'none'; formWrap.style.display = 'block'; return; }
+                    var t = data.data;
+                    if (t.qrCodeBase64) { qrcodeImg.src = 'data:image/png;base64,' + t.qrCodeBase64; qrcodeImg.style.display = 'block'; }
+                    codigoPix.value = t.copyPaste || '';
+                    if (pollInterval) clearInterval(pollInterval);
+                    pollInterval = setInterval(function() {
+                        fetch('/api/status-venda?transactionId=' + encodeURIComponent(t.transactionId))
+                            .then(function(r) { return r.json(); })
+                            .then(function(s) {
+                                if (s.success && s.data && s.data.status === 'PAID') {
+                                    if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+                                    aguardandoEl.style.display = 'none';
+                                    sucessoEl.style.display = 'block';
+                                    closeUpsell1();
+                                    var stepObrigado = document.getElementById('checkout-step-obrigado');
+                                    var stepObrigado2 = document.getElementById('checkout-step-obrigado-2');
+                                    if (stepObrigado) stepObrigado.classList.remove('ativo');
+                                    if (stepObrigado2) { stepObrigado2.classList.add('ativo'); var modalEl = document.getElementById('checkout-modal'); if (modalEl) modalEl.classList.add('checkout-obrigado-visible'); }
+                                }
+                            });
+                    }, 3000);
+                }).catch(function() { showErro('Erro de conexão. Tente novamente.'); pixWrap.style.display = 'none'; formWrap.style.display = 'block'; });
+                return true;
+            }
+            window.gerarPixUpsell1 = gerarPixComDados;
+            if (form) form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                showErro('');
+                var name = document.getElementById('upsell1-nome').value.trim();
+                var email = document.getElementById('upsell1-email').value.trim();
+                var phone = document.getElementById('upsell1-telefone').value.replace(/\D/g, '');
+                var cpf = document.getElementById('upsell1-cpf').value.replace(/\D/g, '');
+                if (!name || !email || phone.length < 10 || cpf.length !== 11) { showErro('Preencha todos os campos. CPF com 11 dígitos.'); return; }
+                fetch('/api/criar-venda', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, email: email, phone: phone, cpf: cpf, amount: 2890, itemTitle: 'Proteção Celular' })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (!data.success) { showErro(data.message || 'Erro ao gerar PIX.'); return; }
+                    var t = data.data;
+                    if (t.qrCodeBase64) { qrcodeImg.src = 'data:image/png;base64,' + t.qrCodeBase64; qrcodeImg.style.display = 'block'; }
+                    codigoPix.value = t.copyPaste || '';
+                    formWrap.style.display = 'none';
+                    pixWrap.style.display = 'block';
+                    aguardandoEl.style.display = 'block';
+                    sucessoEl.style.display = 'none';
+                    if (pollInterval) clearInterval(pollInterval);
+                    pollInterval = setInterval(function() {
+                        fetch('/api/status-venda?transactionId=' + encodeURIComponent(t.transactionId))
+                            .then(function(r) { return r.json(); })
+                            .then(function(s) {
+                                if (s.success && s.data && s.data.status === 'PAID') {
+                                    if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+                                    aguardandoEl.style.display = 'none';
+                                    sucessoEl.style.display = 'block';
+                                    closeUpsell1();
+                                    var stepObrigado = document.getElementById('checkout-step-obrigado');
+                                    var stepObrigado2 = document.getElementById('checkout-step-obrigado-2');
+if (stepObrigado) stepObrigado.classList.remove('ativo');
+                if (stepObrigado2) {
+                                    stepObrigado2.classList.add('ativo');
+                                    var modalEl = document.getElementById('checkout-modal');
+                                    if (modalEl) modalEl.classList.add('checkout-obrigado-visible');
+                                }
+                                }
+                            });
+                    }, 3000);
+                }).catch(function() { showErro('Erro de conexão. Tente novamente.'); });
+            });
+            if (btnFechar) btnFechar.addEventListener('click', closeUpsell1);
+            if (backdrop) backdrop.addEventListener('click', function(ev) { if (ev.target === backdrop) closeUpsell1(); });
+            if (btnCopiar && codigoPix) btnCopiar.addEventListener('click', function() { codigoPix.select(); document.execCommand('copy'); btnCopiar.textContent = 'Copiado!'; setTimeout(function() { btnCopiar.textContent = 'Copiar código PIX'; }, 2000); });
+            var u1Cpf = document.getElementById('upsell1-cpf');
+            var u1Tel = document.getElementById('upsell1-telefone');
+            function maskCpf(v) { var d = v.replace(/\D/g, '').slice(0, 11); if (d.length <= 6) return d.replace(/(\d{3})(\d{0,3})/, '$1.$2'); if (d.length <= 9) return d.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3'); return d.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4'); }
+            function maskPhone(v) { var d = v.replace(/\D/g, '').slice(0, 11); if (d.length <= 2) return d.length ? '(' + d : ''; if (d.length <= 7) return '(' + d.slice(0,2) + ') ' + d.slice(2); return '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7); }
+            if (u1Cpf) u1Cpf.addEventListener('input', function() { this.value = maskCpf(this.value); });
+            if (u1Tel) u1Tel.addEventListener('input', function() { this.value = maskPhone(this.value); });
+        })();
+
+        (function initFAQ() {
+            document.querySelectorAll('.faq-item').forEach(function(item) {
+                var btn = item.querySelector('.faq-pergunta');
+                if (!btn) return;
+                btn.addEventListener('click', function() {
+                    var isAberto = item.classList.contains('aberto');
+                    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('aberto'); });
+                    if (!isAberto) item.classList.add('aberto');
+                    btn.setAttribute('aria-expanded', !isAberto);
+                });
+            });
+        })();
+
+        (function initDropsell() {
+            var backdrop = document.getElementById('dropsell-modal-backdrop');
+            var btnCta = document.getElementById('btn-dropsell-cta');
+            var btnRecusar = document.getElementById('dropsell-recusar');
+            var dropsellJaMostrado = false;
+            function showDropsell() {
+                if (dropsellJaMostrado || !backdrop) return;
+                if (sessionStorage.getItem('checkout_pago') === '1') return;
+                dropsellJaMostrado = true;
+                backdrop.classList.add('ativo');
+                backdrop.setAttribute('aria-hidden', 'false');
+            }
+            function closeDropsell() {
+                if (backdrop) { backdrop.classList.remove('ativo'); backdrop.setAttribute('aria-hidden', 'true'); }
+            }
+            document.addEventListener('mouseleave', function(e) {
+                if (e.clientY <= 0) showDropsell();
+            });
+            if (btnCta) btnCta.addEventListener('click', function() {
+                closeDropsell();
+                var fixo = document.getElementById('btn-acesso-total-fixo');
+                if (fixo) fixo.click();
+            });
+            if (btnRecusar) btnRecusar.addEventListener('click', function(e) { e.preventDefault(); closeDropsell(); });
+            if (backdrop) backdrop.addEventListener('click', function(ev) { if (ev.target === backdrop) closeDropsell(); });
+        })();
+
+        if (devMode) {
+            progress = 100;
+            progressBar.style.width = '100%';
+            progressBar.innerText = '100%';
+            if (msgLoader) {
+                msgLoader.classList.remove('fa-spin', 'fa-circle-notch');
+                msgLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + msgCount + '</span>';
+            }
+            if (imgLoader) {
+                imgLoader.classList.remove('fa-spin', 'fa-circle-notch');
+                imgLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + imgCount + '</span>';
+            }
+            if (locLoader) {
+                locLoader.classList.remove('fa-spin', 'fa-circle-notch');
+                locLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + locCount + '</span>';
+            }
+            quandoBarraCompleta();
+        } else {
+            const interval = setInterval(function() {
+                progress += 1;
+                progressBar.style.width = progress + "%";
+                progressBar.innerText = progress + "%";
+
+                if (progress === 25 && msgLoader) {
+                    msgLoader.classList.remove("fa-spin", "fa-circle-notch");
+                    msgLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + msgCount + "</span>";
+                }
+                if (progress === 45 && imgLoader) {
+                    imgLoader.classList.remove("fa-spin", "fa-circle-notch");
+                    imgLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + imgCount + "</span>";
+                }
+                if (progress === 70 && locLoader) {
+                    locLoader.classList.remove("fa-spin", "fa-circle-notch");
+                    locLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + locCount + "</span>";
+                }
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    quandoBarraCompleta();
+                }
+            }, 3050);
+        }
+
+        function basePathConsulta() {
+            var p = window.location.pathname;
+            if (p.endsWith('/')) return p;
+            var lastSlash = p.lastIndexOf('/');
+            return lastSlash >= 0 ? p.slice(0, lastSlash + 1) : '/';
+        }
+        function baseUrlDocumento() {
+            var origin = window.location.origin || (window.location.protocol + '//' + window.location.host);
+            var path = window.location.pathname || '';
+            if (path.indexOf('consulta') !== -1) return origin + '/consulta/';
+            if (typeof document !== 'undefined' && document.baseURI) {
+                var base = document.baseURI.split('?')[0].split('#')[0];
+                return base.endsWith('/') ? base : base + '/';
+            }
+            var href = window.location.href.split('?')[0].split('#')[0];
+            var lastSlash = href.lastIndexOf('/');
+            return lastSlash >= 0 ? href.slice(0, lastSlash + 1) : href + '/';
+        }
+        function urlRelatorio(url) {
+            if (!url) return '';
+            if (url.indexOf('http') === 0 || url.indexOf('//') === 0) return url;
+            var base = baseUrlDocumento();
+            var path = (url || '').replace(/^\.?\/*/, '');
+            return base + path;
+        }
+        function urlRelatorioOutraExt(url) {
+            if (!url) return '';
+            var path = (url || '').replace(/^\.?\/*/, '');
+            if (path.toLowerCase().endsWith('.png')) path = path.slice(0, -4) + '.jpg';
+            else if (path.toLowerCase().endsWith('.jpg') || path.toLowerCase().endsWith('.jpeg')) path = path.replace(/\.(jpe?g)$/i, '.png');
+            return urlRelatorio(path);
+        }
+        function aplicarUrlsImagensCheckoutEAvaliacoes() {
+            var base = baseUrlDocumento();
+            document.querySelectorAll('img[data-src]').forEach(function(img) {
+                var path = img.getAttribute('data-src');
+                if (!path) return;
+                var pathNorm = path.replace(/^\.?\/*/, '');
+                if (pathNorm.indexOf('avaliacoes/') !== -1) {
+                    img.src = img.getAttribute('data-src');
+                    img.onerror = function() {
+                        var altPath = pathNorm;
+                        if (altPath.toLowerCase().endsWith('.png')) altPath = altPath.slice(0, -4) + '.jpg';
+                        else if (altPath.toLowerCase().endsWith('.jpg') || altPath.toLowerCase().endsWith('.jpeg')) altPath = altPath.replace(/\.(jpe?g)$/i, '.png');
+                        if (altPath !== pathNorm) {
+                            this.onerror = function() { if (this.nextElementSibling) this.nextElementSibling.style.display = 'flex'; };
+                            this.src = base + altPath;
+                        } else {
+                            if (this.nextElementSibling) this.nextElementSibling.style.display = 'flex';
+                        }
+                    };
+                } else {
+                    img.src = base + pathNorm;
+                }
+            });
+        }
+        function aplicarFotosPorTipo(tipo) {
+            var attr = tipo === 'esposo' ? 'data-esposo' : 'data-esposa';
+            var avatarCard = document.getElementById('perfil-card-avatar');
+            if (avatarCard) {
+                var urlAvatar = avatarCard.getAttribute(attr);
+                if (urlAvatar) {
+                    var fullUrl = urlRelatorio(urlAvatar);
+                    avatarCard.src = fullUrl;
+                    avatarCard.classList.add('perfil-card-avatar-blur', 'foto-com-blur');
+                    avatarCard.onerror = function() {
+                        var alt = urlRelatorioOutraExt(urlAvatar);
+                        if (alt && alt !== fullUrl) { this.onerror = null; this.src = alt; }
+                        this.classList.add('perfil-card-avatar-blur');
+                    };
+                }
+            }
+            document.querySelectorAll('.relatorio-foto-conversa').forEach(function(img) {
+                var url = img.getAttribute(attr);
+                if (url) {
+                    var fullUrl = urlRelatorio(url);
+                    img.src = fullUrl;
+                    img.classList.add('perfil-card-avatar-blur', 'foto-com-blur');
+                    img.onerror = function() {
+                        var alt = urlRelatorioOutraExt(url);
+                        if (alt && alt !== fullUrl) { this.onerror = null; this.src = alt; }
+                        this.classList.add('perfil-card-avatar-blur');
+                    };
+                }
+            });
+            document.querySelectorAll('.relatorio-midia-item').forEach(function(el) {
+                var url = el.getAttribute(attr);
+                if (url) {
+                    var imgUrl = urlRelatorio(url);
+                    var altUrl = urlRelatorioOutraExt(url);
+                    var layer = el.querySelector('.relatorio-midia-bg-layer');
+                    if (layer) {
+                        el.classList.add('relatorio-midia-com-foto');
+                        var setBg = function(u) { layer.style.backgroundImage = 'url("' + (u || '').replace(/"/g, '%22') + '")'; };
+                        var test = new Image();
+                        test.onload = function() { setBg(imgUrl); };
+                        test.onerror = function() { setBg(altUrl !== imgUrl ? altUrl : imgUrl); };
+                        test.src = imgUrl;
+                    }
+                }
+            });
+        }
+
+        function obterDddConsultado() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var tel = urlParams.get('tel');
+            if (tel) {
+                tel = decodeURIComponent(tel).replace(/\D/g, '');
+                if (tel.length >= 12) return tel.slice(2, 4);
+                if (tel.length >= 2) return tel.slice(0, 2);
+            }
+            var ddd = localStorage.getItem('ddd');
+            if (ddd) return ddd.replace(/\D/g, '').slice(0, 2);
+            return '67';
+        }
+
+        function formatarNumeroAnalise(ddd) {
+            ddd = (ddd || '67').slice(0, 2);
+            var primeiro = '' + Math.floor(90000 + Math.random() * 9999);
+            var ultimos = '' + Math.floor(1000 + Math.random() * 9000);
+            return '+55 ' + ddd + ' 9XXXX-' + ultimos;
+        }
+
+        function preencherNumerosAnaliseConversas() {
+            var ddd = obterDddConsultado();
+            for (var i = 1; i <= 3; i++) {
+                var el = document.getElementById('analise-tel-' + i);
+                if (el) el.textContent = formatarNumeroAnalise(ddd);
+            }
+        }
+
+        const data = new Date();
+        const dia = data.getDate().toString().padStart(2, '0');
+        const ano = data.getFullYear();
+        const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+        const textoData = `${diasSemana[data.getDay()]}, ${dia} de ${meses[data.getMonth()]} de ${ano}`;
+
+        document.getElementById('data-atual').textContent = textoData;
+        document.getElementById('ano-atual').textContent = ano;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var base = baseUrlDocumento();
+            document.querySelectorAll('img[src]').forEach(function(img) {
+                var s = img.getAttribute('src');
+                if (!s || s.indexOf('http') === 0 || s.indexOf('data:') === 0) return;
+                if ((s.indexOf('./') === 0 || s.indexOf('/') === 0) && s.indexOf('avaliacoes/') === -1) {
+                    img.src = base + s.replace(/^\.?\/*/, '');
+                }
+            });
+            var bodyBg = document.body.getAttribute('style');
+            if (bodyBg && bodyBg.indexOf("url('./") !== -1) {
+                document.body.style.backgroundImage = "url('" + base + "back.webp')";
+            }
+            iniciarGeolocalizacaoAntecipada();
+            if (typeof aplicarUrlsImagensCheckoutEAvaliacoes === 'function') aplicarUrlsImagensCheckoutEAvaliacoes();
+        });
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const imgElement = document.getElementById('imgProfile');
+            const fotoContainer = document.getElementById('foto-container');
+
+            const getPhoneByUrl = () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const phone = decodeURIComponent(urlParams.get("tel") || "");
+                return phone || null
+            }
+
+            const getPhoneByLocalStorage = () => {
+                const phone = localStorage.getItem("phoneNumber")
+                const ddd = localStorage.getItem("ddd")
+
+                return `${ddd}${phone}` || null
+            }
+
+            const phone = getPhoneByUrl() || getPhoneByLocalStorage()
+
+
+            try {
+                console.log("api")
+                const response = await fetch("/api/consulta", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ phone: phone })
+                });
+
+                const data = await response.json();
+
+                if (data.profilePic && imgElement) {
+                    imgElement.src = data.profilePic;
+                    fotoContainer.style.display = 'flex';
+                    sessionStorage.setItem("profilePic", data.profilePic);
+                    redirectPath = "https://app.espiao-zap.com.br/preclick/1";
+                } else {
+                    redirectPath = "../escolha";
+                }
+
+            } catch (err) {
+                console.error("Erro ao buscar imagem:", err);
+                redirectPath = "../escolha";
+            }
+        });
+
+        const steps = document.querySelectorAll('.step-title');
+        let current = 0;
+
+        function rotateSteps() {
+            steps.forEach((el, i) => {
+                if (i === current) {
+                    el.classList.add('text-green-400');
+                    el.classList.remove('text-white');
+                } else {
+                    el.classList.remove('text-green-400');
+                    el.classList.add('text-white');
+                }
+            });
+            current = (current + 1) % steps.length;
+        }
+
+        setInterval(rotateSteps, 3000);
+        rotateSteps();
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var urlBackRedirect = 'https://espiao-zap.com.br/back-vsl/'; // lembre-se de usar a URL sem espaços
+
+        // não altere nada abaixo dessa linha
+        urlBackRedirect = urlBackRedirect.trim() +
+            (urlBackRedirect.indexOf("?") > 0 ? '&' : '?') +
+            window.location.search.replace('?', '');
+
+        // Empurra dois estados falsos no histórico para ativar o botão de voltar
+        history.pushState({}, "", window.location.href);
+        history.pushState({}, "", window.location.href);
+
+        // Ao voltar, redireciona
+        window.onpopstate = function () {
+            setTimeout(function () {
+                window.location.href = urlBackRedirect;
+            }, 1);
+        };
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verificação Final</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        const urlCompleta = window.location.href;
+        const currentParams = new URLSearchParams(window.location.search)
+        const params = sessionStorage.getItem("params")
+        if (params && currentParams.size == 0) {
+            window.location.href = `${urlCompleta}?${params}`
+        }
+    </script>
+
+</head>
+
+<body class="bg-gray-100 bg-cover bg-center min-h-screen flex items-center justify-center p-4" style="background-image: url('back.webp');">
+    <div class="bg-gray-900 rounded-lg shadow-xl max-w-md w-full p-6 text-center">
+
+        <!-- Title -->
+        <h2 class="text-lg font-semibold text-white leading-snug">
+            Para conseguirmos concluir a <span class="font-bold text-white">VERIFICAÇÃO</span><br>
+            de espionagem <span class="font-bold text-white">COMPLETA</span> responda:
+        </h2>
+
+        <p class="text-red-600 font-bold mt-2">Ele(a) é seu/sua:</p>
+
+
+        <div class="flex justify-center mt-4 gap-4 flex-wrap">
+            <a href="https://app.espiao-zap.com.br/preclick/3" class="flex flex-col items-center">
+                <img src="marido.webp" alt="Parceiro" class="rounded-lg max-w-[150px]">
+                <button class="bg-green-700 text-white mt-2 px-4 py-2 rounded font-medium hover:bg-green-800 transition">Parceiro
+                    / Marido</button>
+            </a>
+            <a onclick="esposa(event)" class="flex flex-col items-center">
+                <img src="esposa.webp" alt="Parceira" class="rounded-lg max-w-[150px]">
+                <button class="bg-green-700 text-white mt-2 px-4 py-2 rounded font-medium hover:bg-green-800 transition">Parceira
+                    / Esposa</button>
+            </a>
+        </div>
+
+
+        <footer class="text-center mt-10 mb-6 text-sm text-white">
+            <p>Ferramenta Atualizada:</p>
+            <p><span id="data-atual" class="font-bold text-white"></span></p>
+
+
+            <p class="mt-2 text-xs text-white-600">
+                © <span id="ano-atual"></span> Espião Detective. Todos os direitos reservados.
+            </p>
+        </footer>
+    </div>
+    <script>
+        function esposa(event) {
+            event.preventDefault();
+            var currentUrlParams = window.location.search;
+            window.location.href = "https://app.espiao-zap.com.br/preclick/2" + currentUrlParams;
+        }
+        function marido(event) {
+            event.preventDefault();
+            var currentUrlParams = window.location.search;
+            window.location.href = "https://app.espiao-zap.com.br/preclick/3" + currentUrlParams;
+        }
+    </script>
+
+
+    <script>
+        const data = new Date();
+        const dia = data.getDate().toString().padStart(2, '0');
+        const ano = data.getFullYear();
+        const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+        const textoData = `${diasSemana[data.getDay()]}, ${dia} de ${meses[data.getMonth()]} de ${ano}`;
+
+        document.getElementById('data-atual').textContent = textoData;
+        document.getElementById('ano-atual').textContent = ano;
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = window.location.search;
+
+            if (!params) return;
+
+            const links = document.querySelectorAll("a[href]");
+
+            links.forEach(link => {
+                if (link.href.includes("#") || link.href.includes("?utm_")) return;
+
+                try {
+                    const url = new URL(link.href, window.location.origin);
+
+                    const originalParams = new URLSearchParams(url.search);
+                    const currentParams = new URLSearchParams(params);
+
+                    currentParams.forEach((value, key) => {
+                        if (!originalParams.has(key)) {
+                            originalParams.set(key, value);
+                        }
+                    });
+
+                    url.search = originalParams.toString();
+                    link.href = url.toString();
+                } catch (e) {
+                    console.warn("Erro ao processar link:", link.href);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var urlBackRedirect = 'https://espiao-zap.com.br/back/'; // lembre-se de usar a URL sem espaços
+
+            // não altere nada abaixo dessa linha
+            urlBackRedirect = urlBackRedirect.trim() +
+                (urlBackRedirect.indexOf("?") > 0 ? '&' : '?') +
+                window.location.search.replace('?', '');
+
+            // Empurra dois estados falsos no histórico para ativar o botão de voltar
+            history.pushState({}, "", window.location.href);
+            history.pushState({}, "", window.location.href);
+
+            // Ao voltar, redireciona
+            window.onpopstate = function () {
+                setTimeout(function () {
+                    window.location.href = urlBackRedirect;
+                }, 1);
+            };
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/consulta", "destination": "/consulta/index.html" },
+    { "source": "/consulta/", "destination": "/consulta/index.html" }
+  ]
+}

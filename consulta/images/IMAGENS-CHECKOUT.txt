@@ -1,0 +1,20 @@
+Imagens usadas no checkout e seções persuasivas
+(coloque os arquivos nesta pasta: consulta/images/)
+
+- seguro-e-confiavel.png    → Banner com 3 selos: Site Seguro SSL, 100% dinheiro de volta, Compra 100% segura (checkout)
+- garantia-90dias.png       → Selo "90 DIAS GARANTIA" (checkout + seção FAQ)
+- antirastreio-orderbump.png → Ícone/product do order bump Anti-Rastreio (R$ 9,90)
+- whatsapp-orderbump.png    → Ícone/product do order bump Guia WhatsApp (R$ 14,90)
+
+Se seguro-e-confiavel.png não existir, aparecem 3 badges em texto no lugar.
+Se outras imagens não existirem, o layout esconde e segue funcionando.
+
+Pasta images/avaliacoes/ (fotos dos cards de avaliações):
+- carlos-perfil.jpg  → Carla P. (mulher)
+- marina-perfil.jpg  → Marina R. (mulher)
+- joao-perfil.jpg    → João L. (homem)
+- ana-perfil.jpg     → Ana S. (mulher)
+- pedro-perfil.webp  → Pedro S. (homem) — use uma das fotos masculinas
+- ricardo-perfil.jpg → Ricardo M. (homem) — use a outra foto masculina
+- juliana-perfil.jpg → Juliana F. (mulher) — use a foto feminina
+Se alguma foto não carregar, aparecem as iniciais no lugar.

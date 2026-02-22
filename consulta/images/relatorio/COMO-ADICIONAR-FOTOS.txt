@@ -1,0 +1,27 @@
+IMPORTANTE: As fotos do relatório SÓ aparecem se os arquivos estiverem
+nesta mesma pasta (consulta/images/relatorio/), com os nomes EXATOS abaixo.
+
+=== ARQUIVOS NECESSÁRIOS (copie para esta pasta com estes nomes) ===
+
+ESPOSO (quando o lead escolhe "Esposo"):
+  esposo-1.png
+  esposo-2.png
+  esposo-3.png
+  foto recuperada 1.jpg
+  foto recuperada 2.jpg
+  foto recuperada 3.jpg
+  foto recuperada 4.jpg
+  foto recuperada 5.jpg
+
+ESPOSA (quando o lead escolhe "Esposa") — nomes: esposa-1 até esposa-9
+  esposa-1.jpg a esposa-9.jpg  (extensão .jpg)
+  → esposa-1, 2, 3: card Perfil + 3 conversas
+  → esposa-4 a esposa-9: 6 células do grid "Mídia Recuperada"
+  Se suas fotos forem .png, renomeie para .jpg ou avise para ajustarmos.
+
+Onde cada um aparece:
+- esposa-1, 2, 3: card "Perfil WhatsApp" e as 3 conversas em "Análise de Conversas"
+- esposa-4 a esposa-9: as 6 células do grid "Mídia Recuperada"
+- esposo: igual como antes (esposo-1,2,3 + foto recuperada 1-5 + esposo-1 na 6ª célula)
+
+Depois de colocar os arquivos aqui, recarregue a página (F5 ou Ctrl+F5).

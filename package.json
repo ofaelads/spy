@@ -1,0 +1,13 @@
+{
+  "name": "spy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "serve . -l 3000",
+    "start": "serve . -l 3000",
+    "build": "echo 'Static site - no build step'"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
