@@ -426,7 +426,7 @@
                                 <label for="checkout-email">E-mail</label>
                                 <input type="email" id="checkout-email" name="email" required placeholder="seu@email.com">
                                 <label for="checkout-telefone">Telefone (com DDD)</label>
-                                <input type="tel" id="checkout-telefone" name="phone" required placeholder="(00) 00000-0000">
+                                <input type="tel" id="checkout-telefone" name="phone" required placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel" inputmode="numeric">
                                 <label for="checkout-cpf">CPF (apenas números)</label>
                                 <input type="text" id="checkout-cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
                                 <button type="submit" class="btn-gerar-pix btn-gerar-pix-pulse" id="btn-gerar-pix">Gerar PIX</button>
@@ -541,7 +541,7 @@
                             <label for="upsell1-email">E-mail</label>
                             <input type="email" id="upsell1-email" required placeholder="seu@email.com">
                             <label for="upsell1-telefone">Telefone (com DDD)</label>
-                            <input type="tel" id="upsell1-telefone" required placeholder="(00) 00000-0000">
+                            <input type="tel" id="upsell1-telefone" required placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel" inputmode="numeric">
                             <label for="upsell1-cpf">CPF (apenas números)</label>
                             <input type="text" id="upsell1-cpf" required placeholder="000.000.000-00" maxlength="14">
                             <button type="submit" class="upsell1-btn-pagar" id="upsell1-btn-gerar"><i class="fas fa-qrcode"></i> Gerar PIX e pagar R$ 28,90</button>
@@ -1272,15 +1272,24 @@
                 return d.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
             }
             function maskPhone(v) {
-                var d = v.replace(/\D/g, '').slice(0, 11);
-                if (d.length <= 2) return d.length ? '(' + d : '';
+                var d = (v || '').replace(/\D/g, '').slice(0, 11);
+                if (d.length === 0) return '';
+                if (d.length <= 2) return '(' + d;
                 if (d.length <= 7) return '(' + d.slice(0,2) + ') ' + d.slice(2);
                 return '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7);
             }
             var cpfInput = document.getElementById('checkout-cpf');
             var telInput = document.getElementById('checkout-telefone');
             if (cpfInput) cpfInput.addEventListener('input', function() { this.value = maskCpf(this.value); });
-            if (telInput) telInput.addEventListener('input', function() { this.value = maskPhone(this.value); });
+            if (telInput) {
+                telInput.addEventListener('input', function() {
+                    var el = this;
+                    setTimeout(function() {
+                        var formatted = maskPhone(el.value);
+                        if (el.value !== formatted) el.value = formatted;
+                    }, 0);
+                });
+            }
 
             var ob1 = document.getElementById('ob-antirastreio');
             var ob2 = document.getElementById('ob-whatsapp');
@@ -1546,9 +1555,17 @@ if (stepObrigado) stepObrigado.classList.remove('ativo');
             var u1Cpf = document.getElementById('upsell1-cpf');
             var u1Tel = document.getElementById('upsell1-telefone');
             function maskCpf(v) { var d = v.replace(/\D/g, '').slice(0, 11); if (d.length <= 6) return d.replace(/(\d{3})(\d{0,3})/, '$1.$2'); if (d.length <= 9) return d.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3'); return d.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4'); }
-            function maskPhone(v) { var d = v.replace(/\D/g, '').slice(0, 11); if (d.length <= 2) return d.length ? '(' + d : ''; if (d.length <= 7) return '(' + d.slice(0,2) + ') ' + d.slice(2); return '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7); }
+            function maskPhoneU1(v) { var d = (v || '').replace(/\D/g, '').slice(0, 11); if (d.length === 0) return ''; if (d.length <= 2) return '(' + d; if (d.length <= 7) return '(' + d.slice(0,2) + ') ' + d.slice(2); return '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7); }
             if (u1Cpf) u1Cpf.addEventListener('input', function() { this.value = maskCpf(this.value); });
-            if (u1Tel) u1Tel.addEventListener('input', function() { this.value = maskPhone(this.value); });
+            if (u1Tel) {
+                u1Tel.addEventListener('input', function() {
+                    var el = this;
+                    setTimeout(function() {
+                        var formatted = maskPhoneU1(el.value);
+                        if (el.value !== formatted) el.value = formatted;
+                    }, 0);
+                });
+            }
         })();
 
         (function initFAQ() {
