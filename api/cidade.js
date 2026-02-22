@@ -1,7 +1,7 @@
 /**
  * Geolocalização por IP (sem pedir permissão ao usuário).
- * Usa dois provedores e prefere o resultado com cidade mais específica
- * (evita "São Paulo/São Paulo" quando a pessoa está em outro estado).
+ * Usa três provedores e refina por estado: prefere resultado com cidade
+ * mais específica e deprioritiza "São Paulo" quando outro estado aparecer.
  */
 
 function getClientIp(req) {
@@ -23,7 +23,17 @@ function ehGenerico(cidade, regiao) {
   return false;
 }
 
-/** Preferir o resultado com cidade mais específica (cidade diferente do estado). */
+/** True se o estado é São Paulo (genérico para muitos IPs no Brasil). */
+function ehEstadoSaoPaulo(regiao) {
+  if (!regiao) return false;
+  const r = (regiao || '').trim().toLowerCase();
+  return r === 'são paulo' || r === 'sao paulo' || r === 'sp';
+}
+
+/**
+ * Escolhe o melhor resultado: prefere não-genérico, depois prefere
+ * qualquer estado que não seja São Paulo (refino por estado).
+ */
 function escolherMelhor(a, b) {
   const genA = ehGenerico(a.cidade, a.regiao);
   const genB = ehGenerico(b.cidade, b.regiao);
@@ -31,7 +41,16 @@ function escolherMelhor(a, b) {
   if (genA && !genB) return b;
   if (a.cidade && !b.cidade) return a;
   if (!a.cidade && b.cidade) return b;
+  const spA = ehEstadoSaoPaulo(a.regiao);
+  const spB = ehEstadoSaoPaulo(b.regiao);
+  if (spA && !spB) return b;
+  if (!spA && spB) return a;
   return a.cidade ? a : b;
+}
+
+function normalizar(r) {
+  if (!r || (!r.cidade && !r.regiao)) return null;
+  return r;
 }
 
 export default async function handler(req, res) {
@@ -50,60 +69,120 @@ export default async function handler(req, res) {
 
   const clientIp = getClientIp(req) || '';
   const ip = clientIp && clientIp !== '::1' && clientIp !== '127.0.0.1' ? clientIp : '';
+  const ipEnc = ip ? encodeURIComponent(ip) : '';
 
-  const urls = [];
+  const fetches = [];
+
   if (ip) {
-    urls.push({
-      name: 'ip-api',
-      url: `https://ip-api.com/json/${encodeURIComponent(ip)}?fields=status,city,regionName,country,lat,lon&lang=pt`,
-    });
-    urls.push({
-      name: 'ipapi',
-      url: `https://ipapi.co/${encodeURIComponent(ip)}/json/`,
-    });
-  } else {
-    urls.push({ name: 'ip-api', url: 'https://ip-api.com/json/?fields=status,city,regionName,country,lat,lon&lang=pt' });
-    urls.push({ name: 'ipapi', url: 'https://ipapi.co/json/' });
-  }
-
-  const results = [];
-
-  try {
-    const promises = urls.map(({ name, url }) =>
-      fetch(url, { headers: { 'Accept': 'application/json' } })
+    fetches.push(
+      fetch(
+        `https://ip-api.com/json/${ipEnc}?fields=status,city,regionName,country,lat,lon&lang=pt`,
+        { headers: { Accept: 'application/json' } }
+      )
         .then((r) => r.json().catch(() => ({})))
         .then((data) => {
-          if (name === 'ip-api') {
-            if (data.status !== 'success') return null;
-            return {
-              cidade: (data.city || '').trim() || null,
-              regiao: (data.regionName || '').trim() || null,
-              pais: (data.country || '').trim() || null,
-              lat: data.lat != null ? data.lat : null,
-              lon: data.lon != null ? data.lon : null,
-            };
-          }
-          if (name === 'ipapi') {
-            const city = (data.city || '').trim() || null;
-            const region = (data.region || '').trim() || null;
-            if (!city && !region) return null;
-            return {
-              cidade: city,
-              regiao: region || null,
-              pais: (data.country_name || '').trim() || null,
-              lat: data.latitude != null ? data.latitude : null,
-              lon: data.longitude != null ? data.longitude : null,
-            };
-          }
-          return null;
+          if (data.status !== 'success') return null;
+          return normalizar({
+            cidade: (data.city || '').trim() || null,
+            regiao: (data.regionName || '').trim() || null,
+            pais: (data.country || '').trim() || null,
+            lat: data.lat != null ? data.lat : null,
+            lon: data.lon != null ? data.lon : null,
+          });
         })
         .catch(() => null)
     );
+    fetches.push(
+      fetch(`https://ipapi.co/${ipEnc}/json/`, { headers: { Accept: 'application/json' } })
+        .then((r) => r.json().catch(() => ({})))
+        .then((data) => {
+          const city = (data.city || '').trim() || null;
+          const region = (data.region || '').trim() || null;
+          if (!city && !region) return null;
+          return normalizar({
+            cidade: city,
+            regiao: region || null,
+            pais: (data.country_name || '').trim() || null,
+            lat: data.latitude != null ? data.latitude : null,
+            lon: data.longitude != null ? data.longitude : null,
+          });
+        })
+        .catch(() => null)
+    );
+    fetches.push(
+      fetch(`https://ipwho.is/${ipEnc}`, { headers: { Accept: 'application/json' } })
+        .then((r) => r.json().catch(() => ({})))
+        .then((data) => {
+          if (!data || !data.success) return null;
+          const city = (data.city || '').trim() || null;
+          const region = (data.region || '').trim() || null;
+          return normalizar({
+            cidade: city,
+            regiao: region || null,
+            pais: (data.country || '').trim() || null,
+            lat: data.latitude != null ? data.latitude : null,
+            lon: data.longitude != null ? data.longitude : null,
+          });
+        })
+        .catch(() => null)
+    );
+  } else {
+    fetches.push(
+      fetch('https://ip-api.com/json/?fields=status,city,regionName,country,lat,lon&lang=pt', {
+        headers: { Accept: 'application/json' },
+      })
+        .then((r) => r.json().catch(() => ({})))
+        .then((data) => {
+          if (data.status !== 'success') return null;
+          return normalizar({
+            cidade: (data.city || '').trim() || null,
+            regiao: (data.regionName || '').trim() || null,
+            pais: (data.country || '').trim() || null,
+            lat: data.lat != null ? data.lat : null,
+            lon: data.lon != null ? data.lon : null,
+          });
+        })
+        .catch(() => null)
+    );
+    fetches.push(
+      fetch('https://ipapi.co/json/', { headers: { Accept: 'application/json' } })
+        .then((r) => r.json().catch(() => ({})))
+        .then((data) => {
+          const city = (data.city || '').trim() || null;
+          const region = (data.region || '').trim() || null;
+          if (!city && !region) return null;
+          return normalizar({
+            cidade: city,
+            regiao: region || null,
+            pais: (data.country_name || '').trim() || null,
+            lat: data.latitude != null ? data.latitude : null,
+            lon: data.longitude != null ? data.longitude : null,
+          });
+        })
+        .catch(() => null)
+    );
+    fetches.push(
+      fetch('https://ipwho.is/', { headers: { Accept: 'application/json' } })
+        .then((r) => r.json().catch(() => ({})))
+        .then((data) => {
+          if (!data || !data.success) return null;
+          const city = (data.city || '').trim() || null;
+          const region = (data.region || '').trim() || null;
+          return normalizar({
+            cidade: city,
+            regiao: region || null,
+            pais: (data.country || '').trim() || null,
+            lat: data.latitude != null ? data.latitude : null,
+            lon: data.longitude != null ? data.longitude : null,
+          });
+        })
+        .catch(() => null)
+    );
+  }
 
-    const settled = await Promise.all(promises);
-    settled.forEach((r) => {
-      if (r && (r.cidade || r.regiao)) results.push(r);
-    });
+  try {
+    const settled = await Promise.all(fetches);
+    const results = settled.filter((r) => r != null);
 
     let best = results[0] || null;
     for (let i = 1; i < results.length; i++) {
@@ -124,8 +203,7 @@ export default async function handler(req, res) {
 
     const city = best.cidade || null;
     const regiao = best.regiao || null;
-    const cidadeRegiao =
-      city && regiao ? city + '/' + regiao : city || regiao || null;
+    const cidadeRegiao = city && regiao ? city + '/' + regiao : city || regiao || null;
 
     res.status(200).json({
       cidade: city,
