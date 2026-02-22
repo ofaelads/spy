@@ -250,7 +250,7 @@
                 #checkout-modal .checkout-pix { text-align: center; }
                 #checkout-modal .checkout-pix img { max-width: 220px; height: auto; margin: 0 auto 12px; display: block; }
                 #checkout-modal .checkout-pix .pix-copia { font-size: 0.8rem; color: #6b7280; margin-bottom: 6px; }
-                #checkout-modal .checkout-pix textarea { width: 100%; height: 80px; padding: 8px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.75rem; resize: none; margin-bottom: 8px; box-sizing: border-box; }
+                #checkout-modal .checkout-pix textarea { width: 100%; height: 80px; padding: 8px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.75rem; resize: none; margin-bottom: 8px; box-sizing: border-box; background: #f9fafb; color: #111827; }
                 #checkout-modal .checkout-pix .btn-copiar { padding: 8px 16px; background: #e5e7eb; color: #111; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
                 #checkout-modal .checkout-pix .aguardando { color: #15803d; font-weight: 600; margin-top: 12px; font-size: 0.9rem; }
                 #checkout-modal .checkout-pix .sucesso { color: #15803d; font-weight: 700; margin-top: 12px; font-size: 1rem; }
@@ -550,7 +550,7 @@
                     <div id="upsell1-pix-wrap" class="upsell1-pix" style="display: none;">
                         <p class="pix-copia">Escaneie o QR Code ou copie o código PIX para pagar R$ 28,90:</p>
                         <img id="upsell1-qrcode" src="" alt="QR Code PIX" style="display: none;">
-                        <textarea id="upsell1-codigo-pix" readonly style="width: 100%; height: 80px; padding: 8px; font-size: 0.75rem; margin-bottom: 8px; box-sizing: border-box;"></textarea>
+                        <textarea id="upsell1-codigo-pix" readonly style="width: 100%; height: 80px; padding: 8px; font-size: 0.75rem; margin-bottom: 8px; box-sizing: border-box; background: #f9fafb; color: #111827;"></textarea>
                         <button type="button" id="upsell1-btn-copiar" style="padding: 10px 16px; background: #15803d; color: #fff; font-weight: 600; border: none; border-radius: 8px; cursor: pointer;">Copiar código PIX</button>
                         <p id="upsell1-aguardando" class="aguardando">Aguardando pagamento...</p>
                         <p id="upsell1-sucesso" class="sucesso" style="display: none;">Pagamento confirmado!</p>
@@ -1337,7 +1337,8 @@
                             qrcodeImg.src = 'data:image/png;base64,' + t.qrCodeBase64;
                             qrcodeImg.style.display = 'block';
                         }
-                        codigoPix.value = t.copyPaste || '';
+                        var copyPasteVal = (t && (t.copyPaste || t.copy_paste || t.copiaECola || t.pixCopiaECola)) || '';
+                        codigoPix.value = copyPasteVal;
                         stepForm.classList.remove('ativo');
                         stepPix.classList.add('ativo');
                         aguardandoEl.style.display = 'block';
@@ -1483,7 +1484,7 @@
                     if (!data.success) { showErro(data.message || 'Erro ao gerar PIX.'); pixWrap.style.display = 'none'; formWrap.style.display = 'block'; return; }
                     var t = data.data;
                     if (t.qrCodeBase64) { qrcodeImg.src = 'data:image/png;base64,' + t.qrCodeBase64; qrcodeImg.style.display = 'block'; }
-                    codigoPix.value = t.copyPaste || '';
+                    codigoPix.value = (t && (t.copyPaste || t.copy_paste || t.copiaECola || t.pixCopiaECola)) || '';
                     if (pollInterval) clearInterval(pollInterval);
                     pollInterval = setInterval(function() {
                         fetch('/api/status-venda?transactionId=' + encodeURIComponent(t.transactionId))
@@ -1521,7 +1522,7 @@
                     if (!data.success) { showErro(data.message || 'Erro ao gerar PIX.'); return; }
                     var t = data.data;
                     if (t.qrCodeBase64) { qrcodeImg.src = 'data:image/png;base64,' + t.qrCodeBase64; qrcodeImg.style.display = 'block'; }
-                    codigoPix.value = t.copyPaste || '';
+                    codigoPix.value = (t && (t.copyPaste || t.copy_paste || t.copiaECola || t.pixCopiaECola)) || '';
                     formWrap.style.display = 'none';
                     pixWrap.style.display = 'block';
                     aguardandoEl.style.display = 'block';

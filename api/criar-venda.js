@@ -113,6 +113,7 @@ export default async function handler(req, res) {
     }
 
     const { transactionId, paymentData, status, invoiceUrl } = data.data;
+    const copyPaste = paymentData?.copyPaste ?? paymentData?.copy_paste ?? paymentData?.copiaECola ?? paymentData?.pixCopiaECola ?? null;
     res.status(200).json({
       success: true,
       data: {
@@ -120,7 +121,7 @@ export default async function handler(req, res) {
         status,
         invoiceUrl,
         qrCodeBase64: paymentData?.qrCodeBase64 || null,
-        copyPaste: paymentData?.copyPaste || null,
+        copyPaste,
         expiresAt: paymentData?.expiresAt || null,
       },
     });
