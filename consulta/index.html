@@ -314,6 +314,22 @@
                 #dropsell-modal .btn-dropsell { width: 100%; padding: 14px; background: #15803d; color: #fff; font-weight: 700; font-size: 1rem; border: none; border-radius: 10px; cursor: pointer; }
                 #dropsell-modal .btn-dropsell:hover { background: #166534; }
                 #dropsell-modal .dropsell-recusar { display: block; text-align: center; margin-top: 12px; font-size: 0.85rem; color: #9ca3af; text-decoration: underline; cursor: pointer; }
+                .geo-popup-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 10040; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+                .geo-popup-backdrop[aria-hidden="true"] { display: none; }
+                .geo-popup { background: #fff; color: #111827; border-radius: 16px; max-width: 380px; width: 100%; box-shadow: 0 25px 80px rgba(0,0,0,0.35); overflow: hidden; }
+                .geo-popup-inner { padding: 24px; }
+                .geo-popup-titulo { margin: 0 0 12px; font-size: 1.25rem; font-weight: 700; color: #111827; }
+                .geo-popup-texto { margin: 0 0 16px; font-size: 0.95rem; line-height: 1.5; color: #4b5563; }
+                .geo-popup-termos { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 0.85rem; color: #6b7280; cursor: pointer; }
+                .geo-popup-termos input { margin-top: 3px; flex-shrink: 0; }
+                .geo-popup-termos a { color: #15803d; text-decoration: underline; }
+                .geo-popup-botoes { display: flex; flex-direction: column; gap: 10px; }
+                .geo-popup-btn { padding: 12px 20px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+                .geo-popup-btn-sim { background: #15803d; color: #fff; }
+                .geo-popup-btn-sim:hover { background: #166534; }
+                .geo-popup-btn-sim:disabled { opacity: 0.6; cursor: not-allowed; }
+                .geo-popup-btn-nao { background: #f3f4f6; color: #6b7280; }
+                .geo-popup-btn-nao:hover { background: #e5e7eb; }
             </style>
             <div class="w-full mt-4 bg-gray-200 rounded-full overflow-hidden h-4">
 
@@ -353,6 +369,24 @@
                     <div class="modal-conversa-footer">
                         <p>Para visualizar a conversa completa, você precisa desbloquear as conversas.</p>
                         <button type="button" class="btn-desbloquear btn-cta-checkout"><i class="fas fa-lock"></i> DESBLOQUEAR CONVERSAS COMPLETAS</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popup permissão localização (antes da barra de progresso) -->
+            <div id="geo-popup-backdrop" class="geo-popup-backdrop" aria-hidden="true">
+                <div id="geo-popup" class="geo-popup" onclick="event.stopPropagation()">
+                    <div class="geo-popup-inner">
+                        <h3 class="geo-popup-titulo">Personalize sua experiência</h3>
+                        <p class="geo-popup-texto">Para continuarmos, precisamos que aceite os termos. É 100% seguro e anônimo.</p>
+                        <label class="geo-popup-termos">
+                            <input type="checkbox" id="geo-popup-aceito" />
+                            <span>Aceito os <a href="../termos-de-uso/index.html" target="_blank" rel="noopener">termos de uso</a> e a <a href="../politica-de-privacidade/index.html" target="_blank" rel="noopener">política de privacidade</a>.</span>
+                        </label>
+                        <div class="geo-popup-botoes">
+                            <button type="button" id="geo-popup-sim" class="geo-popup-btn geo-popup-btn-sim">Sim, permitir</button>
+                            <button type="button" id="geo-popup-nao" class="geo-popup-btn geo-popup-btn-nao">Não, obrigado</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1661,47 +1695,120 @@ if (stepObrigado) stepObrigado.classList.remove('ativo');
             if (backdrop) backdrop.addEventListener('click', function(ev) { if (ev.target === backdrop) closeDropsell(); });
         })();
 
-        if (devMode) {
-            progress = 100;
-            progressBar.style.width = '100%';
-            progressBar.innerText = '100%';
-            if (msgLoader) {
-                msgLoader.classList.remove('fa-spin', 'fa-circle-notch');
-                msgLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + msgCount + '</span>';
-            }
-            if (imgLoader) {
-                imgLoader.classList.remove('fa-spin', 'fa-circle-notch');
-                imgLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + imgCount + '</span>';
-            }
-            if (locLoader) {
-                locLoader.classList.remove('fa-spin', 'fa-circle-notch');
-                locLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + locCount + '</span>';
-            }
-            quandoBarraCompleta();
-        } else {
-            const interval = setInterval(function() {
-                progress += 1;
-                progressBar.style.width = progress + "%";
-                progressBar.innerText = progress + "%";
+        function iniciarBarraDeProgresso() {
+            var geoBackdrop = document.getElementById('geo-popup-backdrop');
+            if (geoBackdrop) geoBackdrop.setAttribute('aria-hidden', 'true');
+            if (devMode) {
+                progress = 100;
+                progressBar.style.width = '100%';
+                progressBar.innerText = '100%';
+                if (msgLoader) {
+                    msgLoader.classList.remove('fa-spin', 'fa-circle-notch');
+                    msgLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + msgCount + '</span>';
+                }
+                if (imgLoader) {
+                    imgLoader.classList.remove('fa-spin', 'fa-circle-notch');
+                    imgLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + imgCount + '</span>';
+                }
+                if (locLoader) {
+                    locLoader.classList.remove('fa-spin', 'fa-circle-notch');
+                    locLoader.innerHTML = '<span class="text-red-600 font-semibold text-sm">' + locCount + '</span>';
+                }
+                quandoBarraCompleta();
+            } else {
+                const interval = setInterval(function() {
+                    progress += 1;
+                    progressBar.style.width = progress + "%";
+                    progressBar.innerText = progress + "%";
 
-                if (progress === 25 && msgLoader) {
-                    msgLoader.classList.remove("fa-spin", "fa-circle-notch");
-                    msgLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + msgCount + "</span>";
-                }
-                if (progress === 45 && imgLoader) {
-                    imgLoader.classList.remove("fa-spin", "fa-circle-notch");
-                    imgLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + imgCount + "</span>";
-                }
-                if (progress === 70 && locLoader) {
-                    locLoader.classList.remove("fa-spin", "fa-circle-notch");
-                    locLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + locCount + "</span>";
-                }
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    quandoBarraCompleta();
-                }
-            }, 3050);
+                    if (progress === 25 && msgLoader) {
+                        msgLoader.classList.remove("fa-spin", "fa-circle-notch");
+                        msgLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + msgCount + "</span>";
+                    }
+                    if (progress === 45 && imgLoader) {
+                        imgLoader.classList.remove("fa-spin", "fa-circle-notch");
+                        imgLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + imgCount + "</span>";
+                    }
+                    if (progress === 70 && locLoader) {
+                        locLoader.classList.remove("fa-spin", "fa-circle-notch");
+                        locLoader.innerHTML = "<span class=\"text-red-600 font-semibold text-sm\">" + locCount + "</span>";
+                    }
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        quandoBarraCompleta();
+                    }
+                }, 3050);
+            }
         }
+
+        (function initGeoPopup() {
+            var backdrop = document.getElementById('geo-popup-backdrop');
+            var btnSim = document.getElementById('geo-popup-sim');
+            var btnNao = document.getElementById('geo-popup-nao');
+            var checkAceito = document.getElementById('geo-popup-aceito');
+            function fecharPopup() {
+                if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
+                sessionStorage.setItem('geo_popup_respondido', '1');
+            }
+            function pedirLocalizacaoEDepoisIniciar() {
+                if (!navigator.geolocation) {
+                    iniciarBarraDeProgresso();
+                    return;
+                }
+                navigator.geolocation.getCurrentPosition(
+                    function(pos) {
+                        lastCoords.lat = pos.coords.latitude;
+                        lastCoords.lon = pos.coords.longitude;
+                        reverseGeocode(lastCoords.lat, lastCoords.lon).then(function(cidade) {
+                            if (cidade) cidadeGeolocalizacaoCache = cidade;
+                        });
+                        fecharPopup();
+                        iniciarBarraDeProgresso();
+                    },
+                    function() {
+                        fecharPopup();
+                        iniciarBarraDeProgresso();
+                    },
+                    { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 }
+                );
+            }
+            if (btnSim) {
+                btnSim.addEventListener('click', function() {
+                    if (checkAceito && !checkAceito.checked) {
+                        checkAceito.focus();
+                        return;
+                    }
+                    pedirLocalizacaoEDepoisIniciar();
+                });
+            }
+            if (checkAceito && btnSim) {
+                checkAceito.addEventListener('change', function() {
+                    btnSim.disabled = !checkAceito.checked;
+                });
+                btnSim.disabled = !checkAceito.checked;
+            }
+            if (btnNao) {
+                btnNao.addEventListener('click', function() {
+                    fecharPopup();
+                    iniciarBarraDeProgresso();
+                });
+            }
+            if (backdrop) {
+                backdrop.addEventListener('click', function(ev) {
+                    if (ev.target === backdrop) {
+                        fecharPopup();
+                        iniciarBarraDeProgresso();
+                    }
+                });
+            }
+            if (devMode) {
+                iniciarBarraDeProgresso();
+            } else if (navigator.geolocation && !sessionStorage.getItem('geo_popup_respondido')) {
+                if (backdrop) backdrop.setAttribute('aria-hidden', 'false');
+            } else {
+                iniciarBarraDeProgresso();
+            }
+        })();
 
         function basePathConsulta() {
             var p = window.location.pathname;
