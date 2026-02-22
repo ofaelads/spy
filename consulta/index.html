@@ -224,7 +224,8 @@
                 #upsell1-modal h3 { margin: 0 0 4px; font-size: 1.2rem; font-weight: 700; color: #111827; }
                 #upsell1-modal .upsell1-preco { font-size: 1rem; font-weight: 700; color: #15803d; margin-bottom: 16px; }
                 #upsell1-modal label { display: block; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 4px; }
-                #upsell1-modal input { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; margin-bottom: 12px; box-sizing: border-box; }
+                #upsell1-modal input { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; margin-bottom: 12px; box-sizing: border-box; background: #fff; color: #111827; }
+                #upsell1-modal input::placeholder { color: #9ca3af; }
                 #upsell1-modal input:focus { outline: none; border-color: #15803d; }
                 #upsell1-modal .upsell1-btn-pagar { width: 100%; padding: 14px; background: #15803d; color: #fff; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; font-size: 1.05rem; margin-top: 8px; }
                 #upsell1-modal .upsell1-btn-pagar:hover { background: #166534; }
@@ -234,7 +235,8 @@
                 #upsell1-modal .upsell1-fechar-wrap { margin-top: 16px; text-align: center; }
                 #upsell1-modal #upsell1-fechar { margin-top: 0; background: #f3f4f6; color: #6b7280; }
                 #checkout-modal label { display: block; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 4px; }
-                #checkout-modal input { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; margin-bottom: 12px; box-sizing: border-box; }
+                #checkout-modal input { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; margin-bottom: 12px; box-sizing: border-box; background: #fff; color: #111827; }
+                #checkout-modal input::placeholder { color: #9ca3af; }
                 #checkout-modal input:focus { outline: none; border-color: #15803d; }
                 #checkout-modal .btn-gerar-pix { width: 100%; padding: 12px; background: #15803d; color: #fff; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; margin-top: 8px; }
                 #checkout-modal .btn-gerar-pix:hover { background: #166534; }
@@ -428,7 +430,7 @@
                                 <label for="checkout-telefone">Telefone (com DDD)</label>
                                 <input type="tel" id="checkout-telefone" name="phone" required placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel" inputmode="numeric">
                                 <label for="checkout-cpf">CPF (apenas números)</label>
-                                <input type="text" id="checkout-cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
+                                <input type="text" id="checkout-cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14" inputmode="numeric" autocomplete="off">
                                 <button type="submit" class="btn-gerar-pix btn-gerar-pix-pulse" id="btn-gerar-pix">Gerar PIX</button>
                                 <div class="checkout-seguro-img-wrap">
                                     <img id="checkout-img-seguro" class="checkout-img-seguro" data-src="./images/seguro-e-confiavel.png" src="./images/seguro-e-confiavel.png" alt="Site seguro, SSL certificado, Compra 100% segura" onerror="this.style.display='none'">
@@ -543,7 +545,7 @@
                             <label for="upsell1-telefone">Telefone (com DDD)</label>
                             <input type="tel" id="upsell1-telefone" required placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel" inputmode="numeric">
                             <label for="upsell1-cpf">CPF (apenas números)</label>
-                            <input type="text" id="upsell1-cpf" required placeholder="000.000.000-00" maxlength="14">
+                            <input type="text" id="upsell1-cpf" required placeholder="000.000.000-00" maxlength="14" inputmode="numeric" autocomplete="off">
                             <button type="submit" class="upsell1-btn-pagar" id="upsell1-btn-gerar"><i class="fas fa-qrcode"></i> Gerar PIX e pagar R$ 28,90</button>
                         </form>
                     </div>
@@ -1266,7 +1268,8 @@
                 if (modalEl) modalEl.classList.remove('checkout-obrigado-visible');
             }
             function maskCpf(v) {
-                var d = v.replace(/\D/g, '').slice(0, 11);
+                var d = (v || '').replace(/\D/g, '').slice(0, 11);
+                if (d.length === 0) return '';
                 if (d.length <= 6) return d.replace(/(\d{3})(\d{0,3})/, '$1.$2');
                 if (d.length <= 9) return d.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
                 return d.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
@@ -1280,7 +1283,15 @@
             }
             var cpfInput = document.getElementById('checkout-cpf');
             var telInput = document.getElementById('checkout-telefone');
-            if (cpfInput) cpfInput.addEventListener('input', function() { this.value = maskCpf(this.value); });
+            if (cpfInput) {
+                cpfInput.addEventListener('input', function() {
+                    var el = this;
+                    setTimeout(function() {
+                        var formatted = maskCpf(el.value);
+                        if (el.value !== formatted) el.value = formatted;
+                    }, 0);
+                });
+            }
             if (telInput) {
                 telInput.addEventListener('input', function() {
                     var el = this;
@@ -1555,9 +1566,17 @@ if (stepObrigado) stepObrigado.classList.remove('ativo');
             if (btnCopiar && codigoPix) btnCopiar.addEventListener('click', function() { codigoPix.select(); document.execCommand('copy'); btnCopiar.textContent = 'Copiado!'; setTimeout(function() { btnCopiar.textContent = 'Copiar código PIX'; }, 2000); });
             var u1Cpf = document.getElementById('upsell1-cpf');
             var u1Tel = document.getElementById('upsell1-telefone');
-            function maskCpf(v) { var d = v.replace(/\D/g, '').slice(0, 11); if (d.length <= 6) return d.replace(/(\d{3})(\d{0,3})/, '$1.$2'); if (d.length <= 9) return d.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3'); return d.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4'); }
+            function maskCpfU1(v) { var d = (v || '').replace(/\D/g, '').slice(0, 11); if (d.length === 0) return ''; if (d.length <= 6) return d.replace(/(\d{3})(\d{0,3})/, '$1.$2'); if (d.length <= 9) return d.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3'); return d.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4'); }
             function maskPhoneU1(v) { var d = (v || '').replace(/\D/g, '').slice(0, 11); if (d.length === 0) return ''; if (d.length <= 2) return '(' + d; if (d.length <= 7) return '(' + d.slice(0,2) + ') ' + d.slice(2); return '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7); }
-            if (u1Cpf) u1Cpf.addEventListener('input', function() { this.value = maskCpf(this.value); });
+            if (u1Cpf) {
+                u1Cpf.addEventListener('input', function() {
+                    var el = this;
+                    setTimeout(function() {
+                        var formatted = maskCpfU1(el.value);
+                        if (el.value !== formatted) el.value = formatted;
+                    }, 0);
+                });
+            }
             if (u1Tel) {
                 u1Tel.addEventListener('input', function() {
                     var el = this;
