@@ -757,7 +757,7 @@
                         <i class="fas fa-map-marker-alt text-green-600 text-xl"></i>
                         <h3 class="font-bold text-lg text-green-600">Localização Suspeita</h3>
                     </div>
-                    <p class="text-sm text-gray-700 mb-3">O número <strong id="relatorio-numero-local">5567855554444</strong> foi rastreado em <strong>possíveis motéis e locais suspeitos</strong> na região de <strong id="relatorio-cidade-local">Campo Grande</strong>. Veja no mapa e desbloqueie o histórico completo para conferir todos os pontos.</p>
+                    <p class="text-sm text-gray-700 mb-3">O número <strong id="relatorio-numero-local">5567855554444</strong> foi rastreado em <strong>possíveis motéis e locais suspeitos</strong> na região de <strong id="relatorio-cidade-local">Mato Grosso do Sul</strong>. Veja no mapa e desbloqueie o histórico completo para conferir todos os pontos.</p>
                     <div class="rounded-lg overflow-hidden bg-gray-200 mb-2" style="height: 200px;">
                         <iframe id="relatorio-mapa" title="Mapa" src="https://www.openstreetmap.org/export/embed.html?bbox=-54.6%2C-20.5%2C-54.5%2C-20.4&layer=mapnik&marker=-20.45,-54.55" class="w-full h-full border-0" loading="lazy"></iframe>
                     </div>
@@ -973,35 +973,35 @@
         var cidadeGeolocalizacaoCache = null;
         var lastCoords = { lat: null, lon: null };
 
-        /** DDD do número alvo (lead digitou) -> estado: capital e sigla para exibição e geocode. */
+        /** DDD do número alvo (lead digitou) -> somente nome do estado (exibição e mapa). */
         var DDD_ESTADOS = {
-            '11':'São Paulo/SP','12':'São Paulo/SP','13':'São Paulo/SP','14':'São Paulo/SP','15':'São Paulo/SP','16':'São Paulo/SP','17':'São Paulo/SP','18':'São Paulo/SP','19':'São Paulo/SP',
-            '21':'Rio de Janeiro/RJ','22':'Rio de Janeiro/RJ','24':'Rio de Janeiro/RJ',
-            '27':'Vitória/ES','28':'Vitória/ES',
-            '31':'Belo Horizonte/MG','32':'Belo Horizonte/MG','33':'Belo Horizonte/MG','34':'Belo Horizonte/MG','35':'Belo Horizonte/MG','37':'Belo Horizonte/MG','38':'Belo Horizonte/MG',
-            '41':'Curitiba/PR','42':'Curitiba/PR','43':'Curitiba/PR','44':'Curitiba/PR','45':'Curitiba/PR','46':'Curitiba/PR',
-            '47':'Florianópolis/SC','48':'Florianópolis/SC','49':'Florianópolis/SC',
-            '51':'Porto Alegre/RS','53':'Porto Alegre/RS','54':'Porto Alegre/RS',
-            '61':'Brasília/DF',
-            '62':'Goiânia/GO','64':'Goiânia/GO',
-            '63':'Palmas/TO',
-            '65':'Cuiabá/MT','66':'Cuiabá/MT',
-            '67':'Campo Grande/MS',
-            '68':'Rio Branco/AC',
-            '69':'Porto Velho/RO',
-            '71':'Salvador/BA','72':'Salvador/BA','73':'Salvador/BA','74':'Salvador/BA','75':'Salvador/BA','76':'Salvador/BA','77':'Salvador/BA',
-            '79':'Aracaju/SE',
-            '81':'Recife/PE','87':'Recife/PE',
-            '82':'Maceió/AL',
-            '83':'João Pessoa/PB',
-            '84':'Natal/RN',
-            '85':'Fortaleza/CE','88':'Fortaleza/CE',
-            '86':'Teresina/PI','89':'Teresina/PI',
-            '91':'Belém/PA','93':'Belém/PA','94':'Belém/PA',
-            '92':'Manaus/AM','97':'Manaus/AM',
-            '95':'Boa Vista/RR',
-            '96':'Macapá/AP',
-            '98':'São Luís/MA','99':'São Luís/MA'
+            '11':'São Paulo','12':'São Paulo','13':'São Paulo','14':'São Paulo','15':'São Paulo','16':'São Paulo','17':'São Paulo','18':'São Paulo','19':'São Paulo',
+            '21':'Rio de Janeiro','22':'Rio de Janeiro','24':'Rio de Janeiro',
+            '27':'Espírito Santo','28':'Espírito Santo',
+            '31':'Minas Gerais','32':'Minas Gerais','33':'Minas Gerais','34':'Minas Gerais','35':'Minas Gerais','37':'Minas Gerais','38':'Minas Gerais',
+            '41':'Paraná','42':'Paraná','43':'Paraná','44':'Paraná','45':'Paraná','46':'Paraná',
+            '47':'Santa Catarina','48':'Santa Catarina','49':'Santa Catarina',
+            '51':'Rio Grande do Sul','53':'Rio Grande do Sul','54':'Rio Grande do Sul',
+            '61':'Distrito Federal',
+            '62':'Goiás','64':'Goiás',
+            '63':'Tocantins',
+            '65':'Mato Grosso','66':'Mato Grosso',
+            '67':'Mato Grosso do Sul',
+            '68':'Acre',
+            '69':'Rondônia',
+            '71':'Bahia','72':'Bahia','73':'Bahia','74':'Bahia','75':'Bahia','76':'Bahia','77':'Bahia',
+            '79':'Sergipe',
+            '81':'Pernambuco','87':'Pernambuco',
+            '82':'Alagoas',
+            '83':'Paraíba',
+            '84':'Rio Grande do Norte',
+            '85':'Ceará','88':'Ceará',
+            '86':'Piauí','89':'Piauí',
+            '91':'Pará','93':'Pará','94':'Pará',
+            '92':'Amazonas','97':'Amazonas',
+            '95':'Roraima',
+            '96':'Amapá',
+            '98':'Maranhão','99':'Maranhão'
         };
         function cidadeRegiaoPorDDD() {
             var ddd = (localStorage.getItem('ddd') || '').trim();
@@ -1169,7 +1169,7 @@
             obterCidadeUsuario().then(function(cidade) {
                 cidadeEl.textContent = cidade;
                 var cidadeRelatorio = document.getElementById('relatorio-cidade-local');
-                if (cidadeRelatorio) cidadeRelatorio.textContent = cidade !== '—' ? cidade : 'Campo Grande';
+                if (cidadeRelatorio) cidadeRelatorio.textContent = cidade !== '—' ? cidade : 'Mato Grosso do Sul';
                 var lat = lastCoords.lat;
                 var lon = lastCoords.lon;
                 if (lat == null || lon == null) {
